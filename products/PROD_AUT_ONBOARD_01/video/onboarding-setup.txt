@@ -1,0 +1,32 @@
+# Video Script: Make.com Onboarding Setup
+**Duration:** ~20 mins
+
+## Outline
+
+[00:00] Introduction
+- Goal: Automate the first 15 minutes of any new client/hire interaction.
+- Tools: Make.com, Google Sheets, Gmail.
+
+[02:30] Importing the Blueprint
+- Screen share: Clicking "Import Blueprint".
+- Selecting `onboarding-main.json`.
+- Explaining the nodes.
+
+[05:00] Configuring Google Sheets
+- Creating the sheet with correct headers.
+- Connecting the account.
+
+[08:00] Configuring OpenAI
+- Generating the API key.
+- Customizing the prompt.
+
+[12:00] Configuring Email
+- Setting up the connection.
+- Mapping the "Output Text" from OpenAI to the "Body" of the email.
+
+[15:00] Testing
+- Running the scenario.
+- Adding a row.
+- Verifying the email.
+
+[19:00] Recap & Support

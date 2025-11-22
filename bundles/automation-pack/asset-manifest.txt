@@ -1,0 +1,16 @@
+Bundle: Automation Pack
+SKUs included: GR-ONBOARD, GR-CONTENT, GR-ROOFVAL
+Bundle SKU: GR-AUTOMATION-PACK
+Version: v1.0
+
+Files to include in ZIP:
+- README-start-here.md
+- products/
+  - PROD_AUT_ONBOARD_01/ (full ZIP contents)
+  - PROD_AUT_CONTENT_01/ (full ZIP contents)
+  - PROD_AUT_ROOFVAL_01/ (full ZIP contents)
+- support.txt
+
+Pre-upload checklist:
+- Ensure all three automations tested end-to-end with sample data.
+- Zip as GR-AUTOMATION-PACK-v1.0.zip and smoke-test delivery.

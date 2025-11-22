@@ -1,0 +1,24 @@
+Product: AI-Powered Content Production Pipeline
+SKU: GR-CONTENT (PROD_AUT_CONTENT_01)
+Version: v1.0
+
+Files to include in ZIP:
+- README-start-here.md
+- Content-Pipeline-Setup.md
+- prompts/
+  - content-repurpose-library.txt
+- blueprints/
+  - content-pipeline-main.json
+  - content-pipeline-backup.json
+- templates/
+  - content-calendar-sheet.csv (and/or Google Sheet link in link.txt)
+  - content-calendar-notion.txt (duplicate link)
+  - visual-asset-automation-notes.md
+- video/
+  - content-pipeline-setup.txt (script/outline)
+- support.txt
+
+Pre-upload checklist:
+- Set placeholders for API keys/tokens; ensure none are embedded in JSON.
+- Validate sample run populates calendar and posts; confirm rate limits.
+- Zip as GR-CONTENT-v1.0.zip and smoke-test delivery.

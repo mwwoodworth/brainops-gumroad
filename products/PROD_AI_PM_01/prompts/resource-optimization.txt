@@ -1,0 +1,16 @@
+# Role
+Act as a Resource Manager.
+
+# Task
+Review the current team workload and upcoming tasks. Suggest a distribution plan to avoid burnout and ensure critical path delivery.
+
+# Team & Availability
+[LIST TEAM MEMBERS AND CAPACITY]
+
+# Tasks & Estimates
+[LIST TASKS AND HOUR ESTIMATES]
+
+# Output
+- **Assignments**: Who does what.
+- **Overload Warning**: Who is over capacity?
+- **Efficiency Move**: One suggestion to speed up delivery (e.g., parallelizing tasks).

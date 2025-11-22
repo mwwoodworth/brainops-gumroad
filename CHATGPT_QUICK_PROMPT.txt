@@ -1,0 +1,42 @@
+You are an AI agent completing pre-launch setup for BrainOps Revenue Engine - a $10K/month digital product launch.
+
+AUTHENTICATION: Use mwwoodworth@gmail.com for all systems
+
+YOUR TASKS (5-7 hours):
+1. ConvertKit email sequence (30 min) - Use API key: dZBDZhlfgkkei70AW0bgIw
+2. Upload 13 products to Gumroad (2-3 hours) - Files in build/ directory
+3. Schedule 9 social posts via Buffer.com (1 hour)
+4. Prepare Reddit/HN posts (30 min) - DO NOT POST until launch day
+5. Test everything (1 hour)
+
+ALL CONTENT PRE-WRITTEN - Just copy from these files:
+- LAUNCH_EMAIL_SEQUENCE.md (5 emails)
+- SOCIAL_MEDIA_POSTS.md (9 posts)
+- LAUNCH_DAY_CHECKLIST.md (Gumroad step-by-step)
+- STRATEGIC_ADVICE.md (Reddit/HN templates)
+- GUMROAD_LISTINGS.md (Product descriptions)
+- gumroad-products-import.json (Product specs)
+- build/*.zip (13 product files ready to upload)
+
+KEY PRODUCTS:
+- 13 total: 10 individual + 3 bundles
+- Ultimate Bundle: $997 (FEATURED - saves $1,153!)
+- Code Products: SaaS ERP ($197), AI Orchestrator ($147), UI Kit ($97)
+
+DISCOUNT CODES TO CREATE:
+- LAUNCH20: 20% off, 48 hours, unlimited uses
+- TEST100: 100% off, 1 use (for testing)
+
+CRITICAL RULES:
+✅ Copy all content EXACTLY from documentation
+✅ Test purchase with TEST100 before finishing
+✅ Schedule social posts but DO NOT post to Reddit/HN yet (launch day only)
+✅ Document all URLs and credentials
+✅ Ask for help with 2FA when needed
+✅ Create "Launch Day Quick Reference" with all URLs
+
+Read full instructions: CHATGPT_AGENT_PROMPT.md
+
+SUCCESS = All systems tested and working, user ready to launch immediately.
+
+BEGIN with ConvertKit, then Gumroad, then Social, then Reddit/HN prep, then testing. Report after each task.

@@ -1,0 +1,63 @@
+{
+  "name": "Roofing Validator Main",
+  "flow": [
+    {
+      "id": 1,
+      "module": "google-sheets:watchRows",
+      "version": 1,
+      "parameters": {
+        "spreadsheetId": "{{SPREADSHEET_ID}}",
+        "sheetName": "Estimates",
+        "filter": "Status = 'Ready for Audit'"
+      }
+    },
+    {
+      "id": 2,
+      "module": "openai:createChatCompletion",
+      "version": 1,
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a commercial roofing estimator. Perform a 47-point audit for compliance, hidden costs, and scope gaps."
+          },
+          {
+            "role": "user",
+            "content": "Estimate inputs: Address {{1.Address}}, RoofType {{1.RoofType}}, SquareFootage {{1.SqFt}}, Layers {{1.Layers}}, LaborRate {{1.LaborRate}}, Materials {{1.Materials}}, Region {{1.Region}}, Notes {{1.Notes}}."
+          }
+        ],
+        "apiKey": "{{OPENAI_API_KEY}}"
+      }
+    },
+    {
+      "id": 3,
+      "module": "google-sheets:updateRow",
+      "version": 1,
+      "parameters": {
+        "rowIndex": "{{1.ROW_NUMBER}}",
+        "Status": "Audited",
+        "RiskSummary": "{{2.choices[0].message.content}}"
+      }
+    },
+    {
+      "id": 4,
+      "module": "google-docs:createDocument",
+      "version": 1,
+      "parameters": {
+        "title": "Audit Report - {{1.ProjectName}}",
+        "content": "{{2.choices[0].message.content}}"
+      }
+    },
+    {
+      "id": 5,
+      "module": "gmail:sendEmail",
+      "version": 1,
+      "parameters": {
+        "to": "{{TEAM_EMAIL}}",
+        "subject": "Roofing Audit Ready: {{1.ProjectName}}",
+        "body": "Audit completed. Report: {{4.url || 4.documentUrl}}"
+      }
+    }
+  ]
+}

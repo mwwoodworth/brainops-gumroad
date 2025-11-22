@@ -1,0 +1,62 @@
+{
+  "source": "convertkit",
+  "sequence": "BrainOps Revenue Engine Launch",
+  "emails": [
+    {
+      "email_number": 1,
+      "name": "Launch Announcement",
+      "send_date": "",
+      "total_sent": 0,
+      "opened": 0,
+      "clicked": 0,
+      "unsubscribed": 0,
+      "open_rate": 0.0,
+      "click_rate": 0.0
+    },
+    {
+      "email_number": 2,
+      "name": "Code Products Deep Dive",
+      "send_date": "",
+      "total_sent": 0,
+      "opened": 0,
+      "clicked": 0,
+      "unsubscribed": 0,
+      "open_rate": 0.0,
+      "click_rate": 0.0
+    },
+    {
+      "email_number": 3,
+      "name": "Automation Packs",
+      "send_date": "",
+      "total_sent": 0,
+      "opened": 0,
+      "clicked": 0,
+      "unsubscribed": 0,
+      "open_rate": 0.0,
+      "click_rate": 0.0
+    },
+    {
+      "email_number": 4,
+      "name": "AI Prompt Packs",
+      "send_date": "",
+      "total_sent": 0,
+      "opened": 0,
+      "clicked": 0,
+      "unsubscribed": 0,
+      "open_rate": 0.0,
+      "click_rate": 0.0
+    },
+    {
+      "email_number": 5,
+      "name": "Final Call",
+      "send_date": "",
+      "total_sent": 0,
+      "opened": 0,
+      "clicked": 0,
+      "unsubscribed": 0,
+      "open_rate": 0.0,
+      "click_rate": 0.0
+    }
+  ],
+  "instructions": "Get these metrics from ConvertKit dashboard: https://app.convertkit.com/sequences"
+}

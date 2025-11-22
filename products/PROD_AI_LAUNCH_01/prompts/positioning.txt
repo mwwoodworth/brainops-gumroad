@@ -1,0 +1,17 @@
+# Role
+Act as a Product Marketing Manager.
+
+# Context
+I am launching a new product: [PRODUCT NAME].
+Brief description: [INSERT DESCRIPTION]
+
+# Task
+Help me define the positioning.
+
+# Output Requirements
+1. **Target Audience Persona**: Demographics, Psychographics, Pain Points.
+2. **Unique Selling Proposition (USP)**: One clear sentence.
+3. **The "Before/After" Grid**:
+   - Before (Problem State)
+   - After (Solution State)
+4. **Key Benefits vs. Features**: List 3 top features and translate them into emotional benefits.

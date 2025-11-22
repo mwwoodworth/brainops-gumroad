@@ -1,0 +1,102 @@
+{
+  "name": "Content Pipeline Main",
+  "flow": [
+    {
+      "id": 1,
+      "module": "google-sheets:watchRows",
+      "version": 1,
+      "parameters": {
+        "spreadsheetId": "{{SPREADSHEET_ID}}",
+        "sheetName": "Ideas",
+        "filter": "Status = 'Approved'"
+      }
+    },
+    {
+      "id": 2,
+      "module": "openai:createChatCompletion",
+      "version": 1,
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a senior content strategist. Write a 600-word blog draft."
+          },
+          {
+            "role": "user",
+            "content": "Topic: {{1.Topic}}. Notes: {{1.Notes}}. Tone: {{1.Tone || 'professional'}}. Audience: {{1.Audience || 'SMB owners'}}."
+          }
+        ],
+        "apiKey": "{{OPENAI_API_KEY}}"
+      }
+    },
+    {
+      "id": 3,
+      "module": "google-docs:createDocument",
+      "version": 1,
+      "parameters": {
+        "title": "{{1.Topic}} - Blog Draft",
+        "content": "{{2.choices[0].message.content}}"
+      }
+    },
+    {
+      "id": 4,
+      "module": "openai:createChatCompletion",
+      "version": 1,
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are an email copywriter. Create a concise newsletter version of this post."
+          },
+          {
+            "role": "user",
+            "content": "Topic: {{1.Topic}}. Blog draft: {{2.choices[0].message.content}}. Tone: {{1.Tone || 'helpful'}}."
+          }
+        ],
+        "apiKey": "{{OPENAI_API_KEY}}"
+      }
+    },
+    {
+      "id": 5,
+      "module": "google-docs:createDocument",
+      "version": 1,
+      "parameters": {
+        "title": "{{1.Topic}} - Newsletter",
+        "content": "{{4.choices[0].message.content}}"
+      }
+    },
+    {
+      "id": 6,
+      "module": "openai:createChatCompletion",
+      "version": 1,
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Write 3 LinkedIn posts (max 300 words total) and 3 tweets (max 600 characters total) from this blog."
+          },
+          {
+            "role": "user",
+            "content": "{{2.choices[0].message.content}}"
+          }
+        ],
+        "apiKey": "{{OPENAI_API_KEY}}"
+      }
+    },
+    {
+      "id": 7,
+      "module": "google-sheets:updateRow",
+      "version": 1,
+      "parameters": {
+        "rowIndex": "{{1.ROW_NUMBER}}",
+        "Status": "Draft Ready",
+        "BlogLink": "{{3.url || 3.documentUrl}}",
+        "EmailLink": "{{5.url || 5.documentUrl}}",
+        "SocialCopy": "{{6.choices[0].message.content}}"
+      }
+    }
+  ]
+}

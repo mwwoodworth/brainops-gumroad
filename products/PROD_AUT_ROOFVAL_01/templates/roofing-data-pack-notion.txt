@@ -1,0 +1,10 @@
+# Roofing Data Pack (Notion)
+
+**Duplicate Link Placeholder**: https://notion.so/placeholder-link-roof-data
+
+## Structure
+### Database: Materials Library
+- Name
+- Cost Per Square (Number)
+- Lifespan (Text)
+- Supplier Contact (Text)

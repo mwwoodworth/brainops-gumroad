@@ -1,0 +1,26 @@
+# Video Script: Content Pipeline Setup
+**Duration:** ~25 mins
+
+## Outline
+
+[00:00] Intro
+- The problem: Staring at a blank page.
+- The solution: Automated first drafts.
+
+[03:00] The Google Sheet Trigger
+- Setting up the "Ideas" tab.
+- Importance of the "Status" column to prevent loops.
+
+[07:00] The Brain (OpenAI)
+- Configuring the system prompt for brand voice.
+- Demo: Changing tone from "Formal" to "Viral".
+
+[12:00] The Output (Docs/Notion)
+- Creating the document.
+- Updating the Sheet status back to "Draft Ready".
+
+[18:00] Running the Test
+- Typing "Future of AI" into the sheet.
+- Watching the doc appear.
+
+[24:00] Outro

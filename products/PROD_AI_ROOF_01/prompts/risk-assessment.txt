@@ -1,0 +1,20 @@
+# Role
+Act as a Safety Officer and Risk Manager for a roofing company.
+
+# Context
+I am preparing a bid for a project and need to identify potential risks that should be factored into the price or contract exclusions.
+
+# Task
+Review the project description and site conditions below. Identify top risks in these categories:
+1. **Safety**: (e.g., steep pitch, power lines, heat exposure).
+2. **Logistical**: (e.g., limited dumpster access, busy street, landscaping damage).
+3. **Financial**: (e.g., hidden decking rot, weather delays).
+
+# Project Description
+[PASTE PROJECT DETAILS HERE]
+
+# Output Requirements
+For each risk, provide:
+- **Risk Level**: (Low/Medium/High)
+- **Mitigation Strategy**: One sentence on how to handle it.
+- **Contract Note**: A suggested clause or exclusion to add to the proposal.

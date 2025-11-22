@@ -1,0 +1,20 @@
+Product: Commercial Roofing Estimation Intelligence Bundle
+SKU: GR-ROOFINT (PROD_AI_ROOF_01)
+Version: v1.0
+
+Files to include in ZIP:
+- README-start-here.md
+- Roofing-Intelligence-Guide.md
+- prompts/
+  - pre-bid-analysis.txt
+  - cost-calculation.txt
+  - risk-assessment.txt
+- ROI-tracker.csv
+- samples/
+  - sample-roof-bid-output.txt
+- support.txt
+
+Pre-upload checklist:
+- Verify prompts reference costs in USD; add region notes if needed.
+- Test sample scenario in GPT-4; confirm outputs match guide.
+- Zip as GR-ROOFINT-v1.0.zip and smoke-test Gumroad delivery.

@@ -1,0 +1,23 @@
+Product: Intelligent Client Onboarding System (Make.com)
+SKU: GR-ONBOARD (PROD_AUT_ONBOARD_01)
+Version: v1.0
+
+Files to include in ZIP:
+- README-start-here.md
+- Onboarding-System-Setup.md
+- Onboarding-Troubleshooting.md
+- blueprints/
+  - onboarding-main.json
+  - onboarding-backup.json
+  - onboarding-test.json
+- references/
+  - module-reference.md
+- video/
+  - onboarding-setup.txt (script/outline)
+- support.txt
+
+Pre-upload checklist:
+- Update webhook URLs/placeholders to <add-urls> for Stripe/PayPal/Gumroad ping.
+- Verify Gmail/ConvertKit modules mapped; redact keys in shared JSON.
+- Import test scenario in Make; confirm full run passes before packaging.
+- Zip as GR-ONBOARD-v1.0.zip and smoke-test delivery.

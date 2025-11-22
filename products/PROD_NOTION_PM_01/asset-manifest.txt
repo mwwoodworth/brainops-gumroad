@@ -1,0 +1,17 @@
+Product: AI-Powered Project Command Center (Notion)
+SKU: GR-PMCMD (PROD_NOTION_PM_01)
+Version: v1.0
+
+Files to include in ZIP:
+- README-start-here.md
+- Notion-PM-Command-Center-Guide.md
+- notion-template-link.txt (duplicate link)
+- automation-recipes.md
+- video/
+  - pm-command-center-walkthrough.txt (script/outline)
+- support.txt
+
+Pre-upload checklist:
+- Confirm Notion link is set to “Duplicate” and permissions correct.
+- Check calculated fields and relations after duplication.
+- Zip as GR-PMCMD-v1.0.zip and smoke-test delivery.

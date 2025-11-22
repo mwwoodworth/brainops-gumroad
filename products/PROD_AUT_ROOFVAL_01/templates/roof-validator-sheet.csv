@@ -1,0 +1,4 @@
+Lead ID,Name,Address,Phone,Status,MapLink
+101,John Doe,123 Maple St Springfield IL,555-0100,New,
+102,Jane Smith,456 Oak Ave Chicago IL,555-0101,New,
+103,Bob Jones,INVALID ADDRESS TEST,555-0000,New,

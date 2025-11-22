@@ -1,0 +1,8 @@
+# Support
+
+Issues with the blueprint?
+Email: support@brainops.com
+Support SLA: <24 hours.
+
+Note: We support the *blueprint logic*, not external API outages (e.g., if OpenAI is down).
+30-day refund policy applies.

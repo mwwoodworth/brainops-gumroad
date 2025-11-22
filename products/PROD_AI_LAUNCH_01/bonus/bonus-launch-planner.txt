@@ -1,0 +1,22 @@
+# Bonus Launch Planner (Notion)
+
+**Duplicate Link Placeholder**: https://notion.so/placeholder-link-launch-planner
+
+## Template Structure (Markdown Export)
+
+### Database: Launch Tasks
+- Property: Task Name (Text)
+- Property: Status (Select: To Do, In Progress, Done)
+- Property: Due Date (Date)
+- Property: Owner (Person)
+
+### Database: Content Calendar
+- Property: Content Piece (Text)
+- Property: Channel (Select: Email, Twitter, LinkedIn)
+- Property: Publish Date (Date)
+- Property: Status (Select: Draft, Scheduled, Published)
+
+### Page: Avatar Worksheet
+- Section: Demographics
+- Section: Pain Points
+- Section: Goals

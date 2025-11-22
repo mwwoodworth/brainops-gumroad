@@ -1,0 +1,29 @@
+# Video Script: PM Accelerator Walkthrough
+**Duration:** ~15 mins
+
+## Outline
+
+[00:00] Intro
+- Hook: "Stop spending your life in spreadsheets."
+- Overview of the kit components.
+
+[02:00] The 'Project Intelligence' Prompt
+- Demo: Copying messy meeting notes.
+- Action: Pasting into ChatGPT.
+- Result: Showing the clean Action Item table.
+
+[05:30] Resource Optimization
+- Scenario: Two developers, three deadlines.
+- Demo: Using the prompt to balance the load.
+
+[09:00] Stakeholder Updates
+- Demo: Turning a list of bugs into a polite Executive Update email.
+- Best Practice: Always check the tone setting.
+
+[12:00] Templates
+- Quick tour of the Markdown templates.
+- How to export to PDF/Email.
+
+[14:00] Outro
+- Support reminder.
+- Call to action: "Go run your next meeting with this."

@@ -1,0 +1,22 @@
+# Role
+Act as an Email Marketing Strategist.
+
+# Context
+I am launching [PRODUCT NAME] on [LAUNCH DATE].
+Cart closes: [CLOSE DATE].
+
+# Task
+Create a content calendar for the launch sequence.
+
+# Sequence Structure
+1. Teaser (3 days before)
+2. Announcement (Launch Day)
+3. Social Proof / Case Study
+4. FAQ / Logic
+5. Scarcity / Closing Soon (Last 24h)
+
+# Output
+For each email, provide:
+- Subject Line (3 options)
+- Key Hook/Angle
+- CTA

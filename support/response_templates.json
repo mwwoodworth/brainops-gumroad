@@ -1,0 +1,28 @@
+{
+  "templates": {
+    "download_issue": {
+      "subject": "Re: Download Issue - Order #{{order_id}}",
+      "body": "Hi {{customer_name}},\n\nSorry to hear you're having trouble downloading your purchase!\n\nHere are a few quick fixes:\n\n1. **Check your Gumroad Library**: https://app.gumroad.com/library\n   Your purchase should appear there with a fresh download link.\n\n2. **Try a different browser**: Sometimes browser extensions block downloads.\n\n3. **Check spam folder**: The download email might have landed there.\n\nIf none of these work, please reply with:\n- Your order number\n- What happens when you click the download link\n- What browser you're using\n\nI'll get this sorted for you ASAP!\n\nBest,\nMatt\nBrainOps Support"
+    },
+    "refund_request": {
+      "subject": "Re: Refund Request - Order #{{order_id}}",
+      "body": "Hi {{customer_name}},\n\nNo problem at all! We have a 30-day money-back guarantee.\n\nI've processed your refund for Order #{{order_id}}. You should see it back in your account within 5-7 business days (usually faster).\n\nBefore you go, would you mind sharing what didn't work for you? Your feedback helps us improve.\n\nIf you ever want to give it another shot, you're always welcome back.\n\nBest,\nMatt\nBrainOps Support"
+    },
+    "technical_help": {
+      "subject": "Re: Technical Issue - {{product_name}}",
+      "body": "Hi {{customer_name}},\n\nThanks for reaching out! I'd be happy to help you get this working.\n\nTo troubleshoot effectively, could you please send me:\n\n1. **Screenshot of the error** (if any)\n2. **What you were trying to do** when it happened\n3. **Your environment**:\n   - Operating system (Windows/Mac/Linux)\n   - Node version (run: node --version)\n   - Any other relevant details\n\nOnce I have this info, I'll send you step-by-step instructions to fix it.\n\nUsually, these issues are quick to resolve!\n\nBest,\nMatt\nBrainOps Support"
+    },
+    "customization_request": {
+      "subject": "Re: Customization Request",
+      "body": "Hi {{customer_name}},\n\nThanks for your interest in custom work!\n\nI offer consulting at $200/hour for customizations.\n\nCould you share more details about what you need?\n- What product are you working with?\n- What specific customization do you need?\n- What's your timeline?\n\nOnce I understand the scope, I'll send you an estimate.\n\nAlternatively, many customizations can be done yourself using the documentation. Happy to point you in the right direction if that's your preference!\n\nBest,\nMatt\nBrainOps Support"
+    },
+    "general_thanks": {
+      "subject": "Re: {{original_subject}}",
+      "body": "Hi {{customer_name}},\n\nYou're very welcome! Glad I could help.\n\nIf you have any other questions, don't hesitate to reach out.\n\nAnd if you're happy with your purchase, I'd love a testimonial! Reply to this email with a few sentences about your experience, and I'll send you a $20 credit for future purchases.\n\nBest,\nMatt\nBrainOps Support"
+    },
+    "testimonial_request": {
+      "subject": "Quick favor? (+ $20 credit)",
+      "body": "Hi {{customer_name}},\n\nI noticed you purchased {{product_name}} a few days ago. Hope it's been helpful!\n\nQuick favor: Would you mind sharing a short testimonial about your experience?\n\nJust reply with:\n- What problem you were trying to solve\n- How the product helped\n- Your results (if any)\n\nIn return, I'll send you a $20 credit for any future purchase.\n\nNo pressure if you're too busy—I totally get it!\n\nBest,\nMatt\nBrainOps"
+    }
+  }
+}

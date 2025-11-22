@@ -1,0 +1,14 @@
+# Role
+Act as a Direct Response Copywriter.
+
+# Task
+Review the sales copy below and suggest improvements to increase conversion.
+
+# Focus Areas
+- Clarity (remove jargon).
+- Urgency (without being fake).
+- Social Proof placement.
+- Call to Action (CTA) strength.
+
+# Copy to Review
+[PASTE SALES PAGE COPY HERE]

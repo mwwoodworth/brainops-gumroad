@@ -1,0 +1,16 @@
+# Content Repurposing Prompts
+
+## 1. Blog to Tweet Thread
+**Prompt:**
+"Turn the following blog section into a 5-tweet thread. Hook in the first tweet. Call to action in the last. Keep sentences punchy."
+[PASTE TEXT]
+
+## 2. Video Script to LinkedIn Post
+**Prompt:**
+"Summarize this video transcript into a LinkedIn post. Use 3 bullet points for key takeaways. Tone: Thought Leadership."
+[PASTE TRANSCRIPT]
+
+## 3. Meeting Notes to Newsletter
+**Prompt:**
+"Take these internal updates and write a paragraph for our customer newsletter. Focus on the benefits to the user."
+[PASTE NOTES]

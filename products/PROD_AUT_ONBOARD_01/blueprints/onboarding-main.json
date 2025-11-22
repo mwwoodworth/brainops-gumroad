@@ -1,0 +1,115 @@
+{
+  "name": "Client Onboarding Main",
+  "flow": [
+    {
+      "id": 1,
+      "module": "http:hook",
+      "version": 1,
+      "parameters": {
+        "name": "payment_webhook",
+        "secret": "{{WEBHOOK_SECRET}}",
+        "expectedSources": ["stripe", "paypal", "gumroad"]
+      }
+    },
+    {
+      "id": 2,
+      "module": "function:parsePayload",
+      "version": 1,
+      "parameters": {
+        "mapping": {
+          "clientName": "{{1.body.customer_name || 1.body.full_name}}",
+          "clientEmail": "{{1.body.email}}",
+          "product": "{{1.body.product_name}}",
+          "amount": "{{1.body.amount}}"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "module": "google-drive:createFolder",
+      "version": 1,
+      "parameters": {
+        "parentId": "{{GOOGLE_DRIVE_PARENT_ID}}",
+        "name": "{{2.clientName}} - {{2.product}}"
+      }
+    },
+    {
+      "id": 4,
+      "module": "google-docs:copyFile",
+      "version": 1,
+      "parameters": {
+        "fileId": "{{WELCOME_PACKET_TEMPLATE_ID}}",
+        "folderId": "{{3.id}}",
+        "name": "Welcome Packet - {{2.clientName}}"
+      }
+    },
+    {
+      "id": 5,
+      "module": "openai:createChatCompletion",
+      "version": 1,
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a concierge crafting friendly onboarding emails."
+          },
+          {
+            "role": "user",
+            "content": "Write a concise, warm welcome email for {{2.clientName}} for product {{2.product}}. Include the drive link {{3.webViewLink}} and calendly link {{CALENDLY_URL}}."
+          }
+        ],
+        "apiKey": "{{OPENAI_API_KEY}}"
+      }
+    },
+    {
+      "id": 6,
+      "module": "gmail:sendEmail",
+      "version": 1,
+      "parameters": {
+        "to": "{{2.clientEmail}}",
+        "subject": "Welcome to {{2.product}}",
+        "body": "{{5.choices[0].message.content}}"
+      }
+    },
+    {
+      "id": 7,
+      "module": "google-calendar:createEvent",
+      "version": 1,
+      "parameters": {
+        "calendarId": "{{GOOGLE_CALENDAR_ID}}",
+        "summary": "Kickoff: {{2.clientName}}",
+        "description": "Automated invite sent. Client will book via Calendly link: {{CALENDLY_URL}}.",
+        "start": "{{nowPlus 'P1D' '09:00'}}",
+        "end": "{{nowPlus 'P1D' '09:30'}}",
+        "attendees": ["{{TEAM_ONBOARDING_EMAIL}}"]
+      }
+    },
+    {
+      "id": 8,
+      "module": "slack:postMessage",
+      "version": 1,
+      "parameters": {
+        "channelId": "{{SLACK_CHANNEL_ID}}",
+        "text": ":tada: New client onboarded: {{2.clientName}} ({{2.product}}) — Drive folder: {{3.webViewLink}}"
+      }
+    },
+    {
+      "id": 9,
+      "module": "google-sheets:addRow",
+      "version": 1,
+      "parameters": {
+        "spreadsheetId": "{{CRM_SHEET_ID}}",
+        "sheetName": "Clients",
+        "values": {
+          "Name": "{{2.clientName}}",
+          "Email": "{{2.clientEmail}}",
+          "Product": "{{2.product}}",
+          "Folder": "{{3.webViewLink}}",
+          "Status": "Welcome Sent",
+          "Payment": "{{2.amount}}"
+        }
+      }
+    }
+  ]
+}
