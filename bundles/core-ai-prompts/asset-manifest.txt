@@ -1,0 +1,16 @@
+Bundle: Core AI Prompt Bundle
+SKUs included: GR-ROOFINT, GR-PMACC, GR-LAUNCH
+Bundle SKU: GR-CORE-AI-PROMPTS
+Version: v1.0
+
+Files to include in ZIP:
+- README-start-here.md
+- products/
+  - PROD_AI_ROOF_01/ (full ZIP contents)
+  - PROD_AI_PM_01/ (full ZIP contents)
+  - PROD_AI_LAUNCH_01/ (full ZIP contents)
+- support.txt
+
+Pre-upload checklist:
+- Ensure each included product is v1.0 and tested.
+- Zip as GR-CORE-AI-PROMPTS-v1.0.zip and smoke-test delivery.

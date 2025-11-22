@@ -1,0 +1,26 @@
+# Video Script: PM Command Center Walkthrough
+**Duration:** ~30 mins
+
+## Outline
+
+[00:00] Intro
+- "Your second brain for project management."
+
+[05:00] The Dashboard
+- Explaining the "My Focus" view.
+- How to drag and drop tasks.
+
+[10:00] Creating a Project
+- Walkthrough: New Project -> Select Template -> Auto-population of standard tasks.
+
+[15:00] Managing Meetings
+- Taking notes in the system.
+- Assigning action items directly from the meeting page.
+
+[20:00] Views
+- Switching between Kanban, List, and Calendar views.
+
+[25:00] Customization
+- How to add a property (e.g., "Priority").
+
+[29:00] Outro

@@ -1,0 +1,23 @@
+Product: Digital Product Launch Optimizer
+SKU: GR-LAUNCH (PROD_AI_LAUNCH_01)
+Version: v1.0
+
+Files to include in ZIP:
+- README-start-here.md
+- Launch-Optimizer-Guide.md
+- prompts/
+  - positioning.txt
+  - sales-optimization.txt
+  - launch-sequence.txt
+- templates/
+  - sales-page-outline.md
+  - email-pack.md
+  - objection-handlers.txt
+- bonus/
+  - bonus-launch-planner.txt (Notion link)
+- support.txt
+
+Pre-upload checklist:
+- Validate launch sequence dates and urgency prompts for honesty/compliance.
+- Confirm Notion link is shareable (duplicate allowed).
+- Zip as GR-LAUNCH-v1.0.zip and smoke-test delivery.

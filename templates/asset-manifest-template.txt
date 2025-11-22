@@ -1,0 +1,18 @@
+Product: <PRODUCT>
+SKU: <SKU>
+Version: v1.0
+
+Files to include in ZIP:
+- README-start-here.md
+- gumroad-description.md (for reference; not needed in customer ZIP)
+- Guide: <guide.pdf>
+- Prompts/Templates: <prompt-txt-files or template links>
+- Automation: <Make-json-blueprint files>
+- Bonus: <Notion links / calendar template / data pack>
+- Support: support.txt (email/contact)
+
+Pre-upload checklist:
+- Replace all <add-link> placeholders with live URLs.
+- Import tests: <Make scenario import tested?> <Notion duplicate tested?> <Sheet permission checked?>
+- Zip folder as <SKU>-v1.0.zip
+- Smoke test Gumroad delivery with $0 coupon.

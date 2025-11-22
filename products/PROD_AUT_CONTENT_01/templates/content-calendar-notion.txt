@@ -1,0 +1,19 @@
+# Content Calendar (Notion)
+
+**Duplicate Link Placeholder**: https://notion.so/placeholder-link-content-calendar
+
+## Structure (Markdown Export)
+
+### Database: Content Pipeline
+- **View**: Board View (Grouped by Status)
+- **Properties**:
+  - Name (Text)
+  - Status (Select: Idea, Writing, Review, Scheduled, Published)
+  - Platform (Multi-select: LinkedIn, Twitter, Blog)
+  - Publish Date (Date)
+  - Draft URL (URL)
+  - Assets (Files & Media)
+
+### Templates inside Notion
+- **Blog Post**: Includes headers for SEO keywords, outline, and draft.
+- **Social Post**: Includes character counter formula.

@@ -1,0 +1,22 @@
+Product: AI-Enhanced Project Management Accelerator
+SKU: GR-PMACC (PROD_AI_PM_01)
+Version: v1.0
+
+Files to include in ZIP:
+- README-start-here.md
+- PM-Accelerator-Playbook.md
+- prompts/
+  - project-intelligence.txt
+  - resource-optimization.txt
+  - stakeholder-alignment.txt
+- templates/
+  - weekly-status.md
+  - meeting-recap.md
+- video/
+  - pm-accelerator-walkthrough.txt (script/outline)
+- support.txt
+
+Pre-upload checklist:
+- Confirm prompts include context block template for each project.
+- Verify video link or file size within Gumroad limits.
+- Zip as GR-PMACC-v1.0.zip and smoke-test delivery.
