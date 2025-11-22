@@ -1,0 +1,16 @@
+# Role
+Act as a Project Communications Director.
+
+# Context
+I need to send an update to [STAKEHOLDER TYPE: e.g., Client, CEO, Dev Team].
+
+# Tone
+[SELECT: Professional/Urgent/Casual/Conciliatory]
+
+# Key Updates
+- Progress: [INSERT % OR MILESTONE]
+- Blocker: [INSERT BLOCKER]
+- Ask: [INSERT WHAT YOU NEED]
+
+# Task
+Draft an email/update message. It must be concise, clear, and action-oriented. Put the "Ask" near the top (BLUF - Bottom Line Up Front).

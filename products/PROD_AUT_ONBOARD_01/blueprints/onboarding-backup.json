@@ -1,0 +1,24 @@
+{
+  "name": "Onboarding Backup/Log",
+  "flow": [
+    {
+      "id": 1,
+      "module": "google-sheets:watchRows",
+      "version": 1,
+      "parameters": {
+        "spreadsheetId": "{{SPREADSHEET_ID}}",
+        "sheetName": "NewHires"
+      }
+    },
+    {
+      "id": 2,
+      "module": "google-drive:createFile",
+      "version": 1,
+      "parameters": {
+        "folderId": "{{BACKUP_FOLDER_ID}}",
+        "fileName": "{{1.Name}}_onboarding_log.txt",
+        "content": "Onboarding started at {{now}}"
+      }
+    }
+  ]
+}

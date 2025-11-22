@@ -1,0 +1,25 @@
+Product: Commercial Roofing Estimation Validator
+SKU: GR-ROOFVAL (PROD_AUT_ROOFVAL_01)
+Version: v1.0
+
+Files to include in ZIP:
+- README-start-here.md
+- Roof-Validator-Setup.md
+- Roof-Validator-Troubleshooting.md
+- blueprints/
+  - roof-validator.json
+- templates/
+  - roof-validator-sheet.csv
+  - roof-validator-excel.csv
+  - report-template.md
+  - roofing-data-pack.csv
+  - roofing-data-pack-notion.txt (duplicate link)
+- support.txt
+- optional/
+  - onboarding-call-link.txt
+
+Pre-upload checklist:
+- Confirm cost factors and compliance rules localized per region notes.
+- Validate sample data run generates correct audit report.
+- Ensure no secrets are present in JSON or templates.
+- Zip as GR-ROOFVAL-v1.0.zip and smoke-test delivery.

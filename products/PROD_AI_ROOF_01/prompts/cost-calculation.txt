@@ -1,0 +1,32 @@
+# Role
+Act as a Construction Cost Estimator specializing in roofing.
+
+# Context
+I need a rough order of magnitude (ROM) cost breakdown for a roofing project.
+
+# Task
+Based on the project parameters provided below, generate a cost breakdown.
+
+# Parameters
+- **Roof Size**: [INSERT SQ FT]
+- **Material**: [INSERT MATERIAL TYPE, e.g., Architectural Shingles]
+- **Pitch**: [INSERT PITCH, e.g., 6/12]
+- **Waste Factor**: [INSERT %, e.g., 10%]
+- **Labor Rate**: [INSERT AVG HOURLY RATE OR SQ RATE]
+
+# Output Requirements
+Provide a table with the following columns:
+- Item (Material/Labor)
+- Unit
+- Quantity (including waste)
+- Estimated Unit Cost (use generic market averages if not provided)
+- Total Cost
+
+Then provide a summary:
+- Subtotal
+- Suggested Contingency (10-20% based on complexity)
+- Total Estimated Cost Range
+
+# Instructions
+- State clearly that these are estimates and must be verified with local suppliers.
+- If specific unit costs are unknown, use a conservative high-average and note it.

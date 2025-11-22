@@ -1,0 +1,265 @@
+{
+  "products": [
+    {
+      "sku": "GR-ROOFINT",
+      "name": "Commercial Roofing Estimation Intelligence Bundle",
+      "price": 9700,
+      "currency": "USD",
+      "description_file": "products/PROD_AI_ROOF_01/gumroad-description.md",
+      "zip_file": "build/GR-ROOFINT-v1.0.zip",
+      "category": "AI Prompts",
+      "tags": ["roofing", "construction", "AI", "prompts", "estimation"],
+      "custom_fields": {
+        "requirements": "GPT-4-capable AI tool (ChatGPT, Claude, Gemini)",
+        "what_included": "15 prompts, PDF guide, ROI tracker, samples",
+        "time_saved": "5-10 hours per bid",
+        "guarantee": "30-day money-back"
+      },
+      "permalink": "gr-roofint",
+      "enable_affiliates": false
+    },
+    {
+      "sku": "GR-PMACC",
+      "name": "AI-Enhanced Project Management Accelerator",
+      "price": 12700,
+      "currency": "USD",
+      "description_file": "products/PROD_AI_PM_01/gumroad-description.md",
+      "zip_file": "build/GR-PMACC-v1.0.zip",
+      "category": "AI Prompts",
+      "tags": ["project-management", "AI", "productivity", "templates", "automation"],
+      "custom_fields": {
+        "requirements": "GPT-4-capable AI tool",
+        "what_included": "15 prompts, playbook, templates, 20m video",
+        "time_saved": "15 minutes daily on status updates",
+        "guarantee": "30-day money-back"
+      },
+      "permalink": "gr-pmacc",
+      "enable_affiliates": true,
+      "affiliate_commission_percent": 50
+    },
+    {
+      "sku": "GR-LAUNCH",
+      "name": "Digital Product Launch Optimizer",
+      "price": 14700,
+      "currency": "USD",
+      "description_file": "products/PROD_AI_LAUNCH_01/gumroad-description.md",
+      "zip_file": "build/GR-LAUNCH-v1.0.zip",
+      "category": "AI Prompts",
+      "tags": ["product-launch", "marketing", "AI", "sales", "digital-products"],
+      "custom_fields": {
+        "requirements": "GPT-4-capable AI tool, Notion (free)",
+        "what_included": "15 prompts, email pack, sales page outline, Notion planner",
+        "time_saved": "20-30 hours of launch planning",
+        "guarantee": "30-day money-back"
+      },
+      "permalink": "gr-launch",
+      "enable_affiliates": false
+    },
+    {
+      "sku": "GR-ONBOARD",
+      "name": "Intelligent Client Onboarding System (Make.com)",
+      "price": 29700,
+      "currency": "USD",
+      "description_file": "products/PROD_AUT_ONBOARD_01/gumroad-description.md",
+      "zip_file": "build/GR-ONBOARD-v1.0.zip",
+      "category": "Automation",
+      "tags": ["automation", "make.com", "onboarding", "client-management", "workflows"],
+      "custom_fields": {
+        "requirements": "Make.com account, payment processor, email provider, calendly",
+        "what_included": "Make JSONs, setup guide, troubleshooting, 45m video",
+        "time_saved": "5 hours per client → 5 minutes automated",
+        "guarantee": "30-day money-back"
+      },
+      "permalink": "gr-onboard",
+      "enable_affiliates": false
+    },
+    {
+      "sku": "GR-CONTENT",
+      "name": "AI-Powered Content Production Pipeline",
+      "price": 34700,
+      "currency": "USD",
+      "description_file": "products/PROD_AUT_CONTENT_01/gumroad-description.md",
+      "zip_file": "build/GR-CONTENT-v1.0.zip",
+      "category": "Automation",
+      "tags": ["content-marketing", "automation", "AI", "social-media", "make.com"],
+      "custom_fields": {
+        "requirements": "Make.com Pro, OpenAI API, platform API tokens, Google Drive",
+        "what_included": "Make JSONs, prompt library, calendar templates, setup video",
+        "time_saved": "2 hours per piece → 10 minutes automated",
+        "guarantee": "30-day money-back"
+      },
+      "permalink": "gr-content",
+      "enable_affiliates": true,
+      "affiliate_commission_percent": 50
+    },
+    {
+      "sku": "GR-ROOFVAL",
+      "name": "Commercial Roofing Estimation Validator",
+      "price": 49700,
+      "currency": "USD",
+      "description_file": "products/PROD_AUT_ROOFVAL_01/gumroad-description.md",
+      "zip_file": "build/GR-ROOFVAL-v1.0.zip",
+      "category": "Automation",
+      "tags": ["roofing", "construction", "automation", "estimation", "validation"],
+      "custom_fields": {
+        "requirements": "Make.com, Google Sheets/Excel",
+        "what_included": "Make JSON, validator spreadsheet, data pack, report template",
+        "time_saved": "3 hours validation → 12 minutes automated",
+        "guarantee": "30-day money-back"
+      },
+      "permalink": "gr-roofval",
+      "enable_affiliates": false
+    },
+    {
+      "sku": "GR-PMCMD",
+      "name": "AI-Powered Project Command Center (Notion)",
+      "price": 19700,
+      "currency": "USD",
+      "description_file": "products/PROD_NOTION_PM_01/gumroad-description.md",
+      "zip_file": "build/GR-PMCMD-v1.0.zip",
+      "category": "Templates",
+      "tags": ["notion", "project-management", "templates", "productivity", "AI"],
+      "custom_fields": {
+        "requirements": "Notion (free or paid)",
+        "what_included": "Notion template, PDF guide, automation recipes, 30m video",
+        "time_saved": "10+ hours setting up PM system",
+        "guarantee": "30-day money-back"
+      },
+      "permalink": "gr-pmcmd",
+      "enable_affiliates": false
+    },
+    {
+      "sku": "GR-ERP-START",
+      "name": "SaaS ERP Starter Kit (Next.js + Supabase)",
+      "price": 19700,
+      "currency": "USD",
+      "description_file": "products/PROD_CODE_ERP_STARTER/gumroad-description.md",
+      "zip_file": "build/GR-ERP-START-v1.0.zip",
+      "category": "Code",
+      "tags": ["saas", "nextjs", "supabase", "starter-kit", "code", "architecture"],
+      "custom_fields": {
+        "requirements": "React/Next.js knowledge",
+        "what_included": "Architecture guide, SQL schema, Service Layer pattern, Auth setup",
+        "time_saved": "200-300 hours of architectural work",
+        "guarantee": "30-day money-back"
+      },
+      "permalink": "gr-erp-start",
+      "enable_affiliates": false
+    },
+    {
+      "sku": "GR-AI-ORCH",
+      "name": "BrainOps AI Orchestrator Framework (Python)",
+      "price": 14700,
+      "currency": "USD",
+      "description_file": "products/PROD_CODE_AI_ORCHESTRATOR/gumroad-description.md",
+      "zip_file": "build/GR-AI-ORCH-v1.0.zip",
+      "category": "Code",
+      "tags": ["AI", "python", "agents", "orchestrator", "llm", "framework"],
+      "custom_fields": {
+        "requirements": "Python knowledge",
+        "what_included": "Agent Core, Orchestrator logic, Memory docs, FastAPI boilerplate",
+        "time_saved": "150-200 hours of distributed systems work",
+        "guarantee": "30-day money-back"
+      },
+      "permalink": "gr-ai-orch",
+      "enable_affiliates": false
+    },
+    {
+      "sku": "GR-UI-KIT",
+      "name": "Modern Command Center UI Kit (React)",
+      "price": 9700,
+      "currency": "USD",
+      "description_file": "products/PROD_CODE_DASHBOARD_UI/gumroad-description.md",
+      "zip_file": "build/GR-UI-KIT-v1.0.zip",
+      "category": "Code",
+      "tags": ["react", "tailwind", "ui-kit", "dashboard", "components", "dark-mode"],
+      "custom_fields": {
+        "requirements": "React/Tailwind knowledge",
+        "what_included": "Dashboard layout, Metric cards, Task stream, Income Lab interface",
+        "time_saved": "30-40 hours of CSS work",
+        "guarantee": "30-day money-back"
+      },
+      "permalink": "gr-ui-kit",
+      "enable_affiliates": false
+    },
+    {
+      "sku": "GR-CORE-AI-PROMPTS",
+      "name": "Core AI Prompt Bundle",
+      "price": 29700,
+      "currency": "USD",
+      "description_file": "bundles/core-ai-prompts/gumroad-description.md",
+      "zip_file": "build/GR-CORE-AI-PROMPTS-v1.0.zip",
+      "category": "Bundles",
+      "tags": ["AI", "prompts", "bundle", "productivity", "business"],
+      "custom_fields": {
+        "includes": "Roofing Intelligence + PM Accelerator + Launch Optimizer",
+        "regular_price": "$371",
+        "bundle_price": "$297",
+        "savings": "$74 (20% off)",
+        "guarantee": "30-day money-back"
+      },
+      "permalink": "gr-core-ai-prompts",
+      "enable_affiliates": false
+    },
+    {
+      "sku": "GR-AUTOMATION-PACK",
+      "name": "Automation Pack (Make.com)",
+      "price": 99700,
+      "currency": "USD",
+      "description_file": "bundles/automation-pack/gumroad-description.md",
+      "zip_file": "build/GR-AUTOMATION-PACK-v1.0.zip",
+      "category": "Bundles",
+      "tags": ["automation", "make.com", "bundle", "workflows", "AI"],
+      "custom_fields": {
+        "includes": "Client Onboarding + Content Pipeline + Roofing Validator",
+        "regular_price": "$1,141",
+        "bundle_price": "$997",
+        "savings": "$144 (13% off)",
+        "guarantee": "30-day money-back"
+      },
+      "permalink": "gr-automation-pack",
+      "enable_affiliates": false
+    },
+    {
+      "sku": "GR-ULTIMATE",
+      "name": "Ultimate All-Access Bundle",
+      "price": 99700,
+      "currency": "USD",
+      "description_file": "bundles/ultimate/gumroad-description.md",
+      "zip_file": "build/GR-ULTIMATE-v1.0.zip",
+      "category": "Bundles",
+      "tags": ["bundle", "all-access", "complete", "AI", "automation", "code"],
+      "custom_fields": {
+        "includes": "ALL 10 products (AI Prompts + Automation + Code Kits + Notion)",
+        "regular_price": "$2,150",
+        "bundle_price": "$997",
+        "savings": "$1,153 (54% off)",
+        "guarantee": "30-day money-back",
+        "bonus": "Free 30-minute setup call"
+      },
+      "permalink": "gr-ultimate",
+      "enable_affiliates": false,
+      "featured": true
+    }
+  ],
+  "discount_codes": [
+    {
+      "code": "LAUNCH20",
+      "discount_percent": 20,
+      "valid_for_hours": 48,
+      "applies_to": "all",
+      "max_uses": null,
+      "description": "Launch week special - 20% off everything"
+    },
+    {
+      "code": "TEST100",
+      "discount_percent": 100,
+      "valid_for_hours": null,
+      "applies_to": "all",
+      "max_uses": 10,
+      "description": "Testing only - delete before launch"
+    }
+  ],
+  "custom_thank_you_message": "🎉 Thank you for your purchase!\n\nYour download is ready above. Check your email for the receipt.\n\n💡 Quick Start: Unzip the file and read the \"README-start-here\" file first.\n\n🛟 Support: Email support@brainops.io if you need help (24-hour response guaranteed).\n\n✅ 30-Day Guarantee: If this doesn't save you 10x its price in time, email for a full refund—no questions asked.\n\n—Matt Woodworth\nBrainOps",
+  "notes": "This file contains all product data for Gumroad. Use it as reference when manually creating products. Gumroad does not have a bulk import API, so each product must be created individually via the web interface."
+}

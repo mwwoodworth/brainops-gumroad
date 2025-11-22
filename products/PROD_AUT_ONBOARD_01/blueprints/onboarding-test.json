@@ -1,0 +1,21 @@
+{
+  "name": "Onboarding Test Flow",
+  "flow": [
+    {
+      "id": 1,
+      "module": "json:parse",
+      "version": 1,
+      "parameters": {
+        "json": "{\"Name\": \"Test User\", \"Email\": \"test@example.com\", \"Role\": \"Developer\"}"
+      }
+    },
+    {
+      "id": 2,
+      "module": "log:write",
+      "version": 1,
+      "parameters": {
+        "message": "Test received for {{1.Name}}"
+      }
+    }
+  ]
+}

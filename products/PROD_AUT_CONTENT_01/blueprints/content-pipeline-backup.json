@@ -1,0 +1,22 @@
+{
+  "name": "Content Pipeline Backup",
+  "flow": [
+    {
+      "id": 1,
+      "module": "google-drive:watchFiles",
+      "version": 1,
+      "parameters": {
+        "folderId": "{{DRAFTS_FOLDER_ID}}"
+      }
+    },
+    {
+      "id": 2,
+      "module": "dropbox:uploadFile",
+      "version": 1,
+      "parameters": {
+        "path": "/Backup/Content/{{1.name}}",
+        "data": "{{1.data}}"
+      }
+    }
+  ]
+}
