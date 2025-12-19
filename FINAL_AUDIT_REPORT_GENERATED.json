@@ -1,0 +1,191 @@
+{
+  "audit_date": "2025-12-16",
+  "auditor": "Gemini CLI",
+  "summary": {
+    "total_products": 13,
+    "pass": 1,
+    "warn": 2,
+    "fail": 10,
+    "critical_issues": "Placeholder/Corrupt assets in all content products. Empty ZIPs for bundles."
+  },
+  "products": [
+    {
+      "code": "GR-ROOFINT",
+      "name": "Commercial Roofing Estimation Intelligence Bundle",
+      "type": "Content/Prompts",
+      "zip_file": "GR-ROOFINT-v1.0.zip",
+      "size": "8.0K",
+      "rating": 1,
+      "status": "FAIL",
+      "issues": [
+        "ZIP size (8K) too small for PDF guide and samples",
+        "Likely contains 0-byte or placeholder artifacts",
+        "Cannot be sold in current state"
+      ],
+      "pricing": "$97"
+    },
+    {
+      "code": "GR-PMACC",
+      "name": "AI-Enhanced Project Management Accelerator",
+      "type": "Content/Prompts",
+      "zip_file": "GR-PMACC-v1.0.zip",
+      "size": "8.2K",
+      "rating": 1,
+      "status": "CRITICAL_FAIL",
+      "issues": [
+        "PM-Accelerator-Playbook.pdf is 65 bytes (Corrupt)",
+        "video/pm-accelerator-walkthrough.mp4 is 69 bytes (Corrupt)",
+        "DOCX templates are ~30 bytes (Corrupt)"
+      ],
+      "pricing": "$127"
+    },
+    {
+      "code": "GR-LAUNCH",
+      "name": "Digital Product Launch Optimizer",
+      "type": "Content/Prompts",
+      "zip_file": "GR-LAUNCH-v1.0.zip",
+      "size": "7.9K",
+      "rating": 1,
+      "status": "CRITICAL_FAIL",
+      "issues": [
+        "Launch-Optimizer-Guide.pdf is 40 bytes (Corrupt)",
+        "DOCX templates are ~30 bytes (Corrupt)",
+        "Product promises PDF/Docs but delivers broken files"
+      ],
+      "pricing": "$147"
+    },
+    {
+      "code": "GR-ONBOARD",
+      "name": "Intelligent Client Onboarding System",
+      "type": "Automation/Make",
+      "zip_file": "GR-ONBOARD-v1.0.zip",
+      "size": "8.8K",
+      "rating": 2,
+      "status": "FAIL",
+      "issues": [
+        "Video size (implied 45m) incompatible with 8.8K ZIP",
+        "PDF guides likely placeholders",
+        "Make blueprints (JSON) might be real but documentation is missing/broken"
+      ],
+      "pricing": "$297"
+    },
+    {
+      "code": "GR-CONTENT",
+      "name": "AI-Powered Content Production Pipeline",
+      "type": "Automation/Make",
+      "zip_file": "GR-CONTENT-v1.0.zip",
+      "size": "8.4K",
+      "rating": 2,
+      "status": "FAIL",
+      "issues": [
+        "Video size incompatible with 8.4K ZIP",
+        "Missing substantial assets"
+      ],
+      "pricing": "$347"
+    },
+    {
+      "code": "GR-ROOFVAL",
+      "name": "Commercial Roofing Estimation Validator",
+      "type": "Automation/Make",
+      "zip_file": "GR-ROOFVAL-v1.0.zip",
+      "size": "7.8K",
+      "rating": 2,
+      "status": "FAIL",
+      "issues": [
+        "ZIP too small for Excel/Sheet validators and data packs",
+        "High ticket price ($497) requires flawless delivery"
+      ],
+      "pricing": "$497"
+    },
+    {
+      "code": "GR-PMCMD",
+      "name": "AI-Powered Project Command Center",
+      "type": "Notion",
+      "zip_file": "GR-PMCMD-v1.0.zip",
+      "size": "4.8K",
+      "rating": 3,
+      "status": "FAIL",
+      "issues": [
+        "Video (30m walkthrough) missing",
+        "PDF guide missing/placeholder",
+        "Likely only contains text link to Notion"
+      ],
+      "pricing": "$197"
+    },
+    {
+      "code": "GR-ERP-START",
+      "name": "SaaS ERP Starter Kit",
+      "type": "Code",
+      "zip_file": "GR-ERP-START-v1.0.zip",
+      "size": "514K",
+      "rating": 8,
+      "status": "PASS",
+      "issues": [
+        "Contains massive generated file (brainops.ts 3.3MB) - valid but bloats",
+        "Otherwise seems structurally complete"
+      ],
+      "pricing": "$197"
+    },
+    {
+      "code": "GR-AI-ORCH",
+      "name": "BrainOps AI Orchestrator Framework",
+      "type": "Code",
+      "zip_file": "GR-AI-ORCH-v1.0.zip",
+      "size": "65K",
+      "rating": 6,
+      "status": "WARN",
+      "issues": [
+        "Contains __pycache__ directories (Unprofessional)",
+        "Functional code seems present"
+      ],
+      "pricing": "$147"
+    },
+    {
+      "code": "GR-UI-KIT",
+      "name": "Modern Command Center UI Kit",
+      "type": "Code",
+      "zip_file": "GR-UI-KIT-v1.0.zip",
+      "size": "24K",
+      "rating": 7,
+      "status": "PASS/WARN",
+      "issues": [
+        "Size seems reasonable for pure code",
+        "Verify no node_modules or junk"
+      ],
+      "pricing": "$97"
+    },
+    {
+      "code": "GR-CORE-AI-PROMPTS",
+      "name": "Core AI Prompt Bundle",
+      "type": "Bundle",
+      "zip_file": "GR-CORE-AI-PROMPTS-v1.0.zip",
+      "size": "1.8K",
+      "rating": 1,
+      "status": "CRITICAL_FAIL",
+      "issues": ["ZIP is empty of products. Contains only Manifest/Readme."],
+      "pricing": "Bundle"
+    },
+    {
+      "code": "GR-AUTOMATION-PACK",
+      "name": "Automation Pack",
+      "type": "Bundle",
+      "zip_file": "GR-AUTOMATION-PACK-v1.0.zip",
+      "size": "1.8K",
+      "rating": 1,
+      "status": "CRITICAL_FAIL",
+      "issues": ["ZIP is empty of products. Contains only Manifest/Readme."],
+      "pricing": "Bundle"
+    },
+    {
+      "code": "GR-ULTIMATE",
+      "name": "Ultimate Bundle",
+      "type": "Bundle",
+      "zip_file": "GR-ULTIMATE-v1.0.zip",
+      "size": "2.0K",
+      "rating": 1,
+      "status": "CRITICAL_FAIL",
+      "issues": ["ZIP is empty of products. Contains only Manifest/Readme."],
+      "pricing": "Bundle"
+    }
+  ]
+}
