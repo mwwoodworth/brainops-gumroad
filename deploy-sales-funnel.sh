@@ -3,12 +3,19 @@
 # Deploy Sales Funnel Automation
 # Complete deployment script for the BrainOps sales funnel
 
+set -euo pipefail
+
 echo "🚀 BrainOps Sales Funnel Deployment"
 echo "===================================="
 echo ""
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GUMROAD_DIR="$SCRIPT_DIR"
+
+# Load canonical BrainOps env (no secrets printed).
+if [ -f "/home/matt-woodworth/dev/scripts/brainops-env.sh" ]; then
+  BRAINOPS_ENV_SILENT=1 source "/home/matt-woodworth/dev/scripts/brainops-env.sh" || true
+fi
 
 # Step 1: Check all product files are ready
 echo "📦 Checking product files..."
@@ -25,10 +32,14 @@ echo ""
 echo "🔑 Verifying API keys..."
 
 # Check ConvertKit
-if curl -s "https://api.convertkit.com/v3/account?api_key=kit_fcbff1cd724ae283842f9e0d431a88c7" | grep -q "primary_email"; then
-    echo "   ✅ ConvertKit API: Valid"
+if [ -n "${CONVERTKIT_API_KEY:-}" ]; then
+  if curl -s "https://api.convertkit.com/v3/account?api_key=${CONVERTKIT_API_KEY}" | grep -q "primary_email"; then
+      echo "   ✅ ConvertKit API: Valid"
+  else
+      echo "   ❌ ConvertKit API: Invalid"
+  fi
 else
-    echo "   ❌ ConvertKit API: Invalid"
+  echo "   ⚠️ ConvertKit API: Skipping (CONVERTKIT_API_KEY not set)"
 fi
 
 # Check Stripe (test mode)
@@ -40,12 +51,16 @@ else
 fi
 
 # Check Supabase
-if curl -s "https://yomagoqdmxszqtdwuhab.supabase.co/rest/v1/" \
-    -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvbWFnb3FkbXhzenF0ZHd1aGFiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0OTgzMzI3NiwiZXhwIjoyMDY1NDA5Mjc2fQ.7C3guJ_0moYGkdyeFmJ9cd2BmduB5NnU00erIIxH3gQ" \
-    > /dev/null 2>&1; then
-    echo "   ✅ Supabase API: Valid"
+SUPABASE_URL="${SUPABASE_URL:-${NEXT_PUBLIC_SUPABASE_URL:-https://yomagoqdmxszqtdwuhab.supabase.co}}"
+SUPABASE_ANON_KEY="${SUPABASE_ANON_KEY:-${NEXT_PUBLIC_SUPABASE_ANON_KEY:-}}"
+if [ -n "${SUPABASE_ANON_KEY}" ]; then
+  if curl -s "${SUPABASE_URL}/rest/v1/" -H "apikey: ${SUPABASE_ANON_KEY}" > /dev/null 2>&1; then
+      echo "   ✅ Supabase API: Valid"
+  else
+      echo "   ❌ Supabase API: Invalid"
+  fi
 else
-    echo "   ❌ Supabase API: Invalid"
+  echo "   ⚠️ Supabase API: Skipping (SUPABASE_ANON_KEY / NEXT_PUBLIC_SUPABASE_ANON_KEY not set)"
 fi
 
 echo ""
@@ -105,14 +120,14 @@ ORDER BY total_revenue DESC;
 EOF
 
 echo "   Running database setup..."
-PGPASSWORD=REDACTED_SUPABASE_DB_PASSWORD psql -h aws-0-us-east-2.pooler.supabase.com \
-    -U postgres.yomagoqdmxszqtdwuhab -d postgres \
-    -f /tmp/setup-gumroad-tables.sql 2>/dev/null
-
-if [ $? -eq 0 ]; then
-    echo "   ✅ Database tables created"
+DB_PASSWORD="${SUPABASE_DB_PASSWORD:-${PGPASSWORD:-}}"
+if [ -n "${DB_PASSWORD}" ]; then
+  PGPASSWORD="${DB_PASSWORD}" psql -h aws-0-us-east-2.pooler.supabase.com \
+      -U postgres.yomagoqdmxszqtdwuhab -d postgres \
+      -f /tmp/setup-gumroad-tables.sql 2>/dev/null
+  echo "   ✅ Database tables created"
 else
-    echo "   ⚠️ Database setup skipped (tables may already exist)"
+  echo "   ⚠️ Database setup skipped (SUPABASE_DB_PASSWORD/PGPASSWORD not set)"
 fi
 
 echo ""
@@ -152,7 +167,7 @@ services:
       - key: PORT
         value: 10000
       - key: CONVERTKIT_API_KEY
-        value: kit_fcbff1cd724ae283842f9e0d431a88c7
+        value: ${CONVERTKIT_API_KEY}
       - key: STRIPE_SECRET_KEY
         sync: false
       - key: SENDGRID_API_KEY

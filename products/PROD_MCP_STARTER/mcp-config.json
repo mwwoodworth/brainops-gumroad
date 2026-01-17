@@ -1,0 +1,140 @@
+{
+  "mcpServers": {
+    "openai": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/openai-mcp.js"],
+      "env": { "OPENAI_API_KEY": "${OPENAI_API_KEY}" },
+      "status": "configured",
+      "description": "Complete OpenAI API - GPT-4, DALL-E 3, Vision, Embeddings",
+      "capabilities": { "tools": 7 }
+    },
+    "anthropic": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/anthropic-mcp.js"],
+      "env": { "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}" },
+      "status": "configured",
+      "description": "Anthropic Claude API - Opus, Sonnet, Haiku, Vision",
+      "capabilities": { "tools": 3 }
+    },
+    "gemini": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/gemini-mcp.js"],
+      "env": { "GOOGLE_API_KEY": "${GOOGLE_API_KEY}", "GEMINI_API_KEY": "${GEMINI_API_KEY}" },
+      "status": "configured",
+      "description": "Google Gemini API - Pro, Ultra, Flash, Vision",
+      "capabilities": { "tools": 3 }
+    },
+    "vercel": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/vercel-mcp.js"],
+      "env": { "VERCEL_TOKEN": "${VERCEL_TOKEN}" },
+      "status": "configured",
+      "description": "Complete Vercel API control",
+      "capabilities": { "tools": 34 }
+    },
+    "render": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/render-mcp.js"],
+      "env": { "RENDER_API_KEY": "${RENDER_API_KEY}" },
+      "status": "configured",
+      "description": "Complete Render API control",
+      "capabilities": { "tools": 39 }
+    },
+    "supabase": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/supabase-mcp.js"],
+      "env": { "SUPABASE_HOST": "${SUPABASE_HOST}", "SUPABASE_PORT": "${SUPABASE_PORT}", "SUPABASE_USER": "${SUPABASE_USER}", "SUPABASE_PASSWORD": "${SUPABASE_PASSWORD}", "SUPABASE_DATABASE": "${SUPABASE_DATABASE}" },
+      "status": "configured",
+      "description": "Direct PostgreSQL/Supabase control",
+      "capabilities": { "tools": 40 }
+    },
+    "playwright": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/playwright-mcp.js"],
+      "description": "Complete browser automation",
+      "capabilities": { "tools": 60 }
+    },
+    "github": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/github-mcp.js"],
+      "env": { "GITHUB_TOKEN": "${GITHUB_TOKEN}" },
+      "status": "configured",
+      "description": "Complete GitHub API control",
+      "capabilities": { "tools": 50 }
+    },
+    "python_executor": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/python-executor-mcp.js"],
+      "status": "configured",
+      "description": "Python executor",
+      "capabilities": { "tools": 8 }
+    },
+    "ollama": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/ollama-mcp.js"],
+      "status": "configured",
+      "description": "Local Ollama LLM",
+      "capabilities": { "tools": 2 }
+    },
+    "docker": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/docker-mcp.js"],
+      "env": { "DOCKER_HOST": "${DOCKER_HOST:-unix:///var/run/docker.sock}" },
+      "description": "Complete Docker control",
+      "capabilities": { "tools": 53 }
+    },
+    "stripe": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/stripe-mcp.js"],
+      "env": { "STRIPE_SECRET_KEY": "${STRIPE_SECRET_KEY}" },
+      "status": "configured",
+      "description": "Complete Stripe API control - payments, subscriptions, customers",
+      "capabilities": { "tools": 55 }
+    },
+    "ai-cli": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/ai-cli-mcp.js"],
+      "status": "configured",
+      "description": "Local AI CLIs (Gemini, Codex, Perplexity, Brain CLI)",
+      "capabilities": { "tools": 4 }
+    },
+    "gumroad": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/gumroad-mcp.js"],
+      "env": { "GUMROAD_ACCESS_TOKEN": "${GUMROAD_ACCESS_TOKEN}" },
+      "status": "configured",
+      "description": "Complete Gumroad API - digital products, sales, discounts, analytics",
+      "capabilities": { "tools": 16, "features": ["Product management", "Sales tracking", "Revenue stats", "Discount codes", "License keys", "Webhooks"] }
+    },
+    "etsy": {
+      "command": "node",
+      "args": ["/home/matt-woodworth/dev/mcp-servers/servers/etsy-mcp.js"],
+      "env": { "ETSY_API_KEY": "${ETSY_API_KEY}", "ETSY_ACCESS_TOKEN": "${ETSY_ACCESS_TOKEN}", "ETSY_SHOP_ID": "${ETSY_SHOP_ID}" },
+      "status": "configured",
+      "description": "Complete Etsy API - listings, orders, reviews, analytics",
+      "capabilities": { "tools": 15, "features": ["Shop management", "Listing CRUD", "Order tracking", "Revenue stats", "Reviews"] }
+    }
+  },
+  "statistics": {
+    "total_servers": 15,
+    "total_tools": 390,
+    "llm_servers": 4,
+    "devops_servers": 9,
+    "revenue_servers": 2,
+    "servers": {
+      "openai": { "tools": 7, "type": "llm" },
+      "anthropic": { "tools": 3, "type": "llm" },
+      "gemini": { "tools": 3, "type": "llm" },
+      "ai-cli": { "tools": 4, "type": "llm" },
+      "vercel": { "tools": 34, "type": "devops" },
+      "render": { "tools": 39, "type": "devops" },
+      "supabase": { "tools": 40, "type": "devops" },
+      "playwright": { "tools": 60, "type": "devops" },
+      "github": { "tools": 50, "type": "devops" },
+      "docker": { "tools": 53, "type": "devops" },
+      "stripe": { "tools": 55, "type": "revenue" },
+      "gumroad": { "tools": 16, "type": "revenue" },
+      "etsy": { "tools": 15, "type": "revenue" }
+    }
+  }
+}

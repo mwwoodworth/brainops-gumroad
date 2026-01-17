@@ -17,8 +17,8 @@ import asyncio
 from decimal import Decimal
 
 # Configuration
-CONVERTKIT_API_KEY = os.getenv("CONVERTKIT_API_KEY", "kit_fcbff1cd724ae283842f9e0d431a88c7")
-CONVERTKIT_API_SECRET = os.getenv("CONVERTKIT_API_SECRET", "Z4IgZp7EMxKtjdHwPjoPUev3p0Y2cmEFKOBar8UpFAA")
+CONVERTKIT_API_KEY = os.getenv("CONVERTKIT_API_KEY", "")
+CONVERTKIT_API_SECRET = os.getenv("CONVERTKIT_API_SECRET", "")
 CONVERTKIT_FORM_ID = os.getenv("CONVERTKIT_FORM_ID", "8419539")
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", "")

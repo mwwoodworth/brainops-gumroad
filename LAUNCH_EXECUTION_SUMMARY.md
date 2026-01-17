@@ -22,7 +22,7 @@ All automated components of the launch have been set up successfully. Here's wha
 
 **View Command:**
 ```bash
-PGPASSWORD=REDACTED_SUPABASE_DB_PASSWORD psql -h aws-0-us-east-2.pooler.supabase.com \
+PGPASSWORD=<REDACTED_PASSWORD> psql -h aws-0-us-east-2.pooler.supabase.com \
   -U postgres.yomagoqdmxszqtdwuhab -d postgres \
   -c "SELECT title, category, priority, estimated_hours FROM cc_tasks WHERE metadata->>'project' = 'brainops-revenue-engine' ORDER BY created_at;"
 ```

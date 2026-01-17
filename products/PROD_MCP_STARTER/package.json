@@ -1,0 +1,40 @@
+{
+  "name": "brainops-mcp-servers",
+  "version": "1.0.0",
+  "description": "Complete DevOps MCP Servers with full API capabilities",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "vercel": "node servers/vercel-mcp.js",
+    "render": "node servers/render-mcp.js",
+    "supabase": "node servers/supabase-mcp.js",
+    "playwright": "node servers/playwright-mcp.js",
+    "github": "node servers/github-mcp.js",
+    "docker": "node servers/docker-mcp.js",
+    "test": "node test/test-all.js",
+    "install-all": "npm install && chmod +x servers/*.js"
+  },
+  "keywords": [
+    "mcp",
+    "devops",
+    "automation",
+    "vercel",
+    "render",
+    "supabase"
+  ],
+  "author": "BrainOps",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.2",
+    "@octokit/rest": "^22.0.1",
+    "@playwright/test": "^1.57.0",
+    "axios": "^1.13.2",
+    "dockerode": "^4.0.2",
+    "dotenv": "^17.2.3",
+    "pg": "^8.11.3"
+  },
+  "overrides": {
+    "body-parser": "2.2.1",
+    "qs": "6.14.1"
+  }
+}

@@ -111,7 +111,7 @@ fi
 
 # Check database connection
 print_info "Testing database connection..."
-if PGPASSWORD=REDACTED_SUPABASE_DB_PASSWORD timeout 5 psql -h aws-0-us-east-2.pooler.supabase.com -U postgres.yomagoqdmxszqtdwuhab -d postgres -c "SELECT 1;" &> /dev/null; then
+if PGPASSWORD=<REDACTED_PASSWORD> timeout 5 psql -h aws-0-us-east-2.pooler.supabase.com -U postgres.yomagoqdmxszqtdwuhab -d postgres -c "SELECT 1;" &> /dev/null; then
   print_success "Database connection successful"
 else
   print_warning "Database connection failed. Task creation will be skipped."

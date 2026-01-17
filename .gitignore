@@ -1,0 +1,27 @@
+# Secrets / local env
+.env
+.env.*
+*.env
+*.env.*
+GUMROAD_CREDENTIALS.md
+*_CREDENTIALS.md
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Logs / artifacts
+logs/
+playwright-report/
+
+# OS junk
+.DS_Store

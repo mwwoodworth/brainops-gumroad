@@ -13,14 +13,16 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
-// Load environment variables from BrainOps.env
-require('dotenv').config({ path: '/home/matt-woodworth/Downloads/BrainOps.env' });
+// Load environment variables (prefer canonical BrainOps env file).
+require('dotenv').config({
+  path: process.env.BRAINOPS_ENV_FILE || '/home/matt-woodworth/dev/_secure/BrainOps.env',
+});
 
 // Configuration
 const config = {
   // ConvertKit
-  CONVERTKIT_API_KEY: process.env.CONVERTKIT_API_KEY || 'kit_fcbff1cd724ae283842f9e0d431a88c7',
-  CONVERTKIT_API_SECRET: process.env.CONVERTKIT_API_SECRET || 'Z4IgZp7EMxKtjdHwPjoPUev3p0Y2cmEFKOBar8UpFAA',
+  CONVERTKIT_API_KEY: process.env.CONVERTKIT_API_KEY,
+  CONVERTKIT_API_SECRET: process.env.CONVERTKIT_API_SECRET,
   CONVERTKIT_FORM_ID: process.env.CONVERTKIT_FORM_ID || '8419539',
 
   // Stripe
@@ -31,7 +33,7 @@ const config = {
 
   // Supabase
   SUPABASE_URL: process.env.SUPABASE_URL || 'https://yomagoqdmxszqtdwuhab.supabase.co',
-  SUPABASE_SERVICE_KEY: process.env.SUPABASE_SERVICE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvbWFnb3FkbXhzenF0ZHd1aGFiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0OTgzMzI3NiwiZXhwIjoyMDY1NDA5Mjc2fQ.7C3guJ_0moYGkdyeFmJ9cd2BmduB5NnU00erIIxH3gQ',
+  SUPABASE_SERVICE_KEY: process.env.SUPABASE_SERVICE_KEY,
 
   // Gumroad
   GUMROAD_WEBHOOK_SECRET: process.env.GUMROAD_WEBHOOK_SECRET || '',
