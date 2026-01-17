@@ -14,7 +14,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const CONVERTKIT_API_KEY = 'kit_fcbff1cd724ae283842f9e0d431a88c7';
+const CONVERTKIT_API_KEY = process.env.CONVERTKIT_API_KEY;
 const GUMROAD_WEBHOOK_SECRET = process.env.GUMROAD_WEBHOOK_SECRET || '';
 const PORT = process.env.PORT || 3456;
 

@@ -9,7 +9,7 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
-const CONVERTKIT_API_KEY = 'kit_fcbff1cd724ae283842f9e0d431a88c7';
+const CONVERTKIT_API_KEY = process.env.CONVERTKIT_API_KEY;
 const CONVERTKIT_API_SECRET = process.env.CONVERTKIT_API_SECRET || ''; // To be updated
 const CONVERTKIT_FORM_ID = process.env.CONVERTKIT_FORM_ID || ''; // To be determined
 

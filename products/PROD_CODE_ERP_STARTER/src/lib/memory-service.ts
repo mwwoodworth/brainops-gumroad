@@ -31,8 +31,7 @@ const resolveApiKey = (): string | null => {
     normalizeKey(process.env.AI_AGENTS_API_KEY) ||
     normalizeKey(process.env.AI_AGENTS_TEST_KEY) ||
     normalizeKey(process.env.BRAINOPS_PROD_KEY);
-  const fallback = 'brainops_prod_key_2025';
-  return envKey || fallback;
+  return envKey || null;
 };
 
 /**

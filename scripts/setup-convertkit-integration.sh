@@ -8,7 +8,7 @@ echo "=========================================================="
 echo ""
 
 # Configuration
-CONVERTKIT_API_KEY="kit_fcbff1cd724ae283842f9e0d431a88c7"
+CONVERTKIT_API_KEY="${CONVERTKIT_API_KEY:-}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GUMROAD_DIR="$(dirname "$SCRIPT_DIR")"
 
