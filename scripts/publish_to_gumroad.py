@@ -7,8 +7,11 @@ from pathlib import Path
 
 # Configuration
 GUMROAD_API_URL = "https://api.gumroad.com/v2"
-IMPORT_FILE = "brainops-gumroad/gumroad-products-import.json"
-BUILD_DIR = "brainops-gumroad"
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_DIR = SCRIPT_DIR.parent
+WORKSPACE_DIR = REPO_DIR.parent
+IMPORT_FILE = str(REPO_DIR / "gumroad-products-import.json")
+PACKAGED_DIR = WORKSPACE_DIR / "gumroad-products" / "packaged"
 
 def load_products():
     with open(IMPORT_FILE, 'r') as f:
@@ -56,6 +59,25 @@ def publish_product(access_token, product_id):
     response = requests.put(url, data=payload)
     return response.status_code == 200
 
+def resolve_zip_path(product):
+    """Resolve the ZIP path for a product, preferring explicit paths then packaged zips."""
+    zip_file = product.get("zip_file")
+    if zip_file:
+        path = Path(zip_file)
+        if not path.is_absolute():
+            path = REPO_DIR / path
+        if path.exists():
+            return path
+
+    sku = product.get("sku")
+    if sku and PACKAGED_DIR.exists():
+        candidates = sorted(PACKAGED_DIR.glob(f"{sku}*.zip"))
+        if candidates:
+            return candidates[0]
+
+    return None
+
+
 def main():
     print("🚀 BrainOps Gumroad Publisher")
     print("=============================")
@@ -78,9 +100,9 @@ def main():
         
     # 3. Process
     for p in products:
-        zip_path = os.path.join(BUILD_DIR, p['zip_file'])
-        if not os.path.exists(zip_path):
-            print(f"⚠️  Warning: ZIP file not found: {zip_path}")
+        zip_path = resolve_zip_path(p)
+        if not zip_path:
+            print(f"⚠️  Warning: ZIP file not found for SKU {p.get('sku')}")
             # Continue anyway to create the product shell
             
         gumroad_prod = create_product(access_token, p)

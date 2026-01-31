@@ -21,6 +21,7 @@ __pycache__/
 
 # Logs / artifacts
 logs/
+build/
 playwright-report/
 
 # OS junk

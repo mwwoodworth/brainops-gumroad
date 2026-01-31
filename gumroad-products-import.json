@@ -6,7 +6,6 @@
       "price": 9700,
       "currency": "USD",
       "description_file": "products/PROD_AI_ROOF_01/gumroad-description.md",
-      "zip_file": "build/GR-ROOFINT-v1.0.zip",
       "category": "AI Prompts",
       "tags": ["roofing", "construction", "AI", "prompts", "estimation"],
       "custom_fields": {
@@ -24,7 +23,6 @@
       "price": 12700,
       "currency": "USD",
       "description_file": "products/PROD_AI_PM_01/gumroad-description.md",
-      "zip_file": "build/GR-PMACC-v1.0.zip",
       "category": "AI Prompts",
       "tags": ["project-management", "AI", "productivity", "templates", "automation"],
       "custom_fields": {
@@ -43,7 +41,6 @@
       "price": 14700,
       "currency": "USD",
       "description_file": "products/PROD_AI_LAUNCH_01/gumroad-description.md",
-      "zip_file": "build/GR-LAUNCH-v1.0.zip",
       "category": "AI Prompts",
       "tags": ["product-launch", "marketing", "AI", "sales", "digital-products"],
       "custom_fields": {
@@ -61,7 +58,6 @@
       "price": 29700,
       "currency": "USD",
       "description_file": "products/PROD_AUT_ONBOARD_01/gumroad-description.md",
-      "zip_file": "build/GR-ONBOARD-v1.0.zip",
       "category": "Automation",
       "tags": ["automation", "make.com", "onboarding", "client-management", "workflows"],
       "custom_fields": {
@@ -79,7 +75,6 @@
       "price": 34700,
       "currency": "USD",
       "description_file": "products/PROD_AUT_CONTENT_01/gumroad-description.md",
-      "zip_file": "build/GR-CONTENT-v1.0.zip",
       "category": "Automation",
       "tags": ["content-marketing", "automation", "AI", "social-media", "make.com"],
       "custom_fields": {
@@ -98,7 +93,6 @@
       "price": 49700,
       "currency": "USD",
       "description_file": "products/PROD_AUT_ROOFVAL_01/gumroad-description.md",
-      "zip_file": "build/GR-ROOFVAL-v1.0.zip",
       "category": "Automation",
       "tags": ["roofing", "construction", "automation", "estimation", "validation"],
       "custom_fields": {
@@ -116,7 +110,6 @@
       "price": 19700,
       "currency": "USD",
       "description_file": "products/PROD_NOTION_PM_01/gumroad-description.md",
-      "zip_file": "build/GR-PMCMD-v1.0.zip",
       "category": "Templates",
       "tags": ["notion", "project-management", "templates", "productivity", "AI"],
       "custom_fields": {
@@ -134,7 +127,6 @@
       "price": 19700,
       "currency": "USD",
       "description_file": "products/PROD_CODE_ERP_STARTER/gumroad-description.md",
-      "zip_file": "build/GR-ERP-START-v1.0.zip",
       "category": "Code",
       "tags": ["saas", "nextjs", "supabase", "starter-kit", "code", "architecture"],
       "custom_fields": {
@@ -152,7 +144,6 @@
       "price": 14700,
       "currency": "USD",
       "description_file": "products/PROD_CODE_AI_ORCHESTRATOR/gumroad-description.md",
-      "zip_file": "build/GR-AI-ORCH-v1.0.zip",
       "category": "Code",
       "tags": ["AI", "python", "agents", "orchestrator", "llm", "framework"],
       "custom_fields": {
@@ -170,7 +161,6 @@
       "price": 9700,
       "currency": "USD",
       "description_file": "products/PROD_CODE_DASHBOARD_UI/gumroad-description.md",
-      "zip_file": "build/GR-UI-KIT-v1.0.zip",
       "category": "Code",
       "tags": ["react", "tailwind", "ui-kit", "dashboard", "components", "dark-mode"],
       "custom_fields": {
@@ -188,7 +178,6 @@
       "price": 29700,
       "currency": "USD",
       "description_file": "bundles/core-ai-prompts/gumroad-description.md",
-      "zip_file": "build/GR-CORE-AI-PROMPTS-v1.0.zip",
       "category": "Bundles",
       "tags": ["AI", "prompts", "bundle", "productivity", "business"],
       "custom_fields": {
@@ -207,7 +196,6 @@
       "price": 99700,
       "currency": "USD",
       "description_file": "bundles/automation-pack/gumroad-description.md",
-      "zip_file": "build/GR-AUTOMATION-PACK-v1.0.zip",
       "category": "Bundles",
       "tags": ["automation", "make.com", "bundle", "workflows", "AI"],
       "custom_fields": {
@@ -226,7 +214,6 @@
       "price": 99700,
       "currency": "USD",
       "description_file": "bundles/ultimate/gumroad-description.md",
-      "zip_file": "build/GR-ULTIMATE-v1.0.zip",
       "category": "Bundles",
       "tags": ["bundle", "all-access", "complete", "AI", "automation", "code"],
       "custom_fields": {
