@@ -5,6 +5,11 @@
 # Checks all automated systems are operational and ready for launch
 ##############################################################################
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
+source "$SCRIPT_DIR/brainops-lib.sh"
+load_brainops_env
+
 echo "╔══════════════════════════════════════════════════════════════════╗"
 echo "║     BRAINOPS REVENUE ENGINE - SYSTEM VERIFICATION CHECK          ║"
 echo "╚══════════════════════════════════════════════════════════════════╝"
@@ -129,20 +134,17 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "4. DATABASE CONNECTIVITY & STRUCTURE"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-DB_HOST="aws-0-us-east-2.pooler.supabase.com"
-DB_USER="postgres.yomagoqdmxszqtdwuhab"
-DB_PASS="REDACTED_SUPABASE_DB_PASSWORD"
-DB_NAME="postgres"
+require_db_env
 
 # Test database connection
-if PGPASSWORD=$DB_PASS psql -h $DB_HOST -U $DB_USER -d $DB_NAME -c "SELECT 1;" &>/dev/null; then
+if brainops_psql -X -v ON_ERROR_STOP=1 -c "SELECT 1;" &>/dev/null; then
   check_pass "Database connection successful"
 else
   check_fail "Cannot connect to database"
 fi
 
 # Check cc_tasks table
-TASK_COUNT=$(PGPASSWORD=$DB_PASS psql -h $DB_HOST -U $DB_USER -d $DB_NAME -t -c "SELECT COUNT(*) FROM cc_tasks WHERE metadata->>'project' = 'brainops-revenue-engine';" 2>/dev/null | xargs)
+TASK_COUNT="$(brainops_psql -X -t -c "SELECT COUNT(*) FROM cc_tasks WHERE metadata->>'project' = 'brainops-revenue-engine';" 2>/dev/null | xargs)"
 if [ "$TASK_COUNT" -eq 22 ]; then
   check_pass "All 22 launch tasks found in database"
 elif [ "$TASK_COUNT" -gt 0 ]; then
@@ -152,7 +154,7 @@ else
 fi
 
 # Check revenue_tracking table
-if PGPASSWORD=$DB_PASS psql -h $DB_HOST -U $DB_USER -d $DB_NAME -c "\d revenue_tracking" &>/dev/null; then
+if brainops_psql -X -c "\d revenue_tracking" &>/dev/null; then
   check_pass "revenue_tracking table exists"
 else
   check_fail "revenue_tracking table not found"
@@ -160,7 +162,7 @@ fi
 
 # Check views
 for view in revenue_daily_summary revenue_by_product revenue_by_channel; do
-  if PGPASSWORD=$DB_PASS psql -h $DB_HOST -U $DB_USER -d $DB_NAME -c "\d $view" &>/dev/null; then
+  if brainops_psql -X -c "\d $view" &>/dev/null; then
     check_pass "$view view exists"
   else
     check_fail "$view view not found"

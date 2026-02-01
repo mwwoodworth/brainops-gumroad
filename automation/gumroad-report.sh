@@ -1,12 +1,19 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Gumroad Revenue Report Script
-# Generates daily/weekly revenue reports
+# Generates daily/weekly revenue reports from the production gumroad_sales table.
+#
+# Security:
+# - No hardcoded secrets.
+# - Uses BrainOps env loader.
 
-DB_HOST="aws-0-us-east-2.pooler.supabase.com"
-DB_PORT="6543"
-DB_NAME="postgres"
-DB_USER="postgres.yomagoqdmxszqtdwuhab"
-DB_PASSWORD="REDACTED_SUPABASE_DB_PASSWORD"
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
+source "$SCRIPT_DIR/../scripts/brainops-lib.sh"
+
+load_brainops_env
+require_db_env
 
 echo "========================================"
 echo "    GUMROAD REVENUE REPORT"
@@ -16,53 +23,54 @@ echo ""
 
 # Total Revenue
 echo "=== TOTAL REVENUE ==="
-PGPASSWORD=$DB_PASSWORD psql -h $DB_HOST -p $DB_PORT -U $DB_USER -d $DB_NAME -t << EOF
+brainops_psql -t << 'EOF'
 SELECT 
-  COALESCE(SUM(price_cents) / 100.0, 0) as total_revenue_usd,
+  COALESCE(SUM(price), 0) as total_revenue_usd,
   COUNT(*) as total_sales,
   COUNT(DISTINCT email) as unique_customers
 FROM gumroad_sales
-WHERE refunded = FALSE;
+WHERE lower(coalesce(metadata->>'refunded', 'false')) NOT IN ('true', '1');
 EOF
 
 echo ""
 echo "=== REVENUE BY PRODUCT ==="
-PGPASSWORD=$DB_PASSWORD psql -h $DB_HOST -p $DB_PORT -U $DB_USER -d $DB_NAME << EOF
+brainops_psql << 'EOF'
 SELECT 
   product_name,
   COUNT(*) as sales,
-  SUM(price_cents) / 100.0 as revenue_usd
+  SUM(price) as revenue_usd
 FROM gumroad_sales
-WHERE refunded = FALSE
+WHERE lower(coalesce(metadata->>'refunded', 'false')) NOT IN ('true', '1')
 GROUP BY product_name
 ORDER BY revenue_usd DESC;
 EOF
 
 echo ""
 echo "=== LAST 7 DAYS ==="
-PGPASSWORD=$DB_PASSWORD psql -h $DB_HOST -p $DB_PORT -U $DB_USER -d $DB_NAME << EOF
+brainops_psql << 'EOF'
 SELECT 
-  DATE(purchase_date) as sale_date,
+  DATE(sale_timestamp) as sale_date,
   COUNT(*) as sales,
-  SUM(price_cents) / 100.0 as revenue_usd
+  SUM(price) as revenue_usd
 FROM gumroad_sales
-WHERE refunded = FALSE
-  AND purchase_date >= NOW() - INTERVAL '7 days'
-GROUP BY DATE(purchase_date)
+WHERE lower(coalesce(metadata->>'refunded', 'false')) NOT IN ('true', '1')
+  AND sale_timestamp >= NOW() - INTERVAL '7 days'
+GROUP BY DATE(sale_timestamp)
 ORDER BY sale_date DESC;
 EOF
 
 echo ""
 echo "=== RECENT SALES ==="
-PGPASSWORD=$DB_PASSWORD psql -h $DB_HOST -p $DB_PORT -U $DB_USER -d $DB_NAME << EOF
+brainops_psql << 'EOF'
 SELECT 
-  purchase_date,
+  sale_timestamp,
   product_name,
-  full_name,
-  price_cents / 100.0 as price_usd
+  customer_name,
+  email,
+  price as price_usd
 FROM gumroad_sales
-WHERE refunded = FALSE
-ORDER BY purchase_date DESC
+WHERE lower(coalesce(metadata->>'refunded', 'false')) NOT IN ('true', '1')
+ORDER BY sale_timestamp DESC
 LIMIT 10;
 EOF
 

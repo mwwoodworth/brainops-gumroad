@@ -1,14 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ##############################################################################
 # BRAINOPS REVENUE ENGINE - LAUNCH ANALYTICS TRACKER
 # Automated tracking of launch metrics across all platforms
 ##############################################################################
 
-DB_HOST="aws-0-us-east-2.pooler.supabase.com"
-DB_USER="postgres.yomagoqdmxszqtdwuhab"
-DB_PASS="REDACTED_SUPABASE_DB_PASSWORD"
-DB_NAME="postgres"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
+source "$SCRIPT_DIR/brainops-lib.sh"
+load_brainops_env
+require_db_env
 
 TIMESTAMP=$(date +%Y-%m-%d_%H-%M-%S)
 LOG_DIR="/home/matt-woodworth/dev/brainops-gumroad/logs"
@@ -25,19 +26,16 @@ log_metric() {
   local metric_value="$2"
   local source="$3"
 
-  PGPASSWORD=$DB_PASS psql -h $DB_HOST -U $DB_USER -d $DB_NAME -c "
-    INSERT INTO system_events (
-      event_type,
-      source_system,
-      payload,
-      created_at
-    ) VALUES (
-      'brainops_launch_metric',
-      '$source',
-      '{\"metric\": \"$metric_name\", \"value\": $metric_value, \"timestamp\": \"$TIMESTAMP\"}',
-      NOW()
-    );
-  " > /dev/null 2>&1
+  brainops_psql -X -v ON_ERROR_STOP=1 \
+    -v source="$source" \
+    -v metric="$metric_name" \
+    -v value="$metric_value" \
+    -v ts="$TIMESTAMP" \
+    -c "INSERT INTO system_events (event_type, source_system, payload, created_at)
+        VALUES ('brainops_launch_metric', :'source',
+          jsonb_build_object('metric', :'metric', 'value', :value::numeric, 'timestamp', :'ts'),
+          NOW()
+        );" >/dev/null 2>&1 || true
 }
 
 # Function to track social media engagement

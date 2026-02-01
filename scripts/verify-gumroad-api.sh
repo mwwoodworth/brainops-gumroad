@@ -1,11 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Gumroad API Verification Script
 # Run this after regenerating your access token to verify connectivity
 
-set -e
+set -euo pipefail
 
-# Load environment
-source /home/matt-woodworth/dev/_secure/BrainOps.env 2>/dev/null
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
+source "$SCRIPT_DIR/brainops-lib.sh"
+load_brainops_env
 
 echo "=========================================="
 echo "Gumroad API Verification"
@@ -13,17 +15,21 @@ echo "=========================================="
 
 if [ -z "$GUMROAD_ACCESS_TOKEN" ]; then
     echo "ERROR: GUMROAD_ACCESS_TOKEN not set!"
-    echo "Please update /home/matt-woodworth/dev/_secure/BrainOps.env"
+    echo "Please set it in the BrainOps env (see /home/matt-woodworth/dev/_secure/BrainOps.env)"
     exit 1
 fi
 
 echo "Token found (${#GUMROAD_ACCESS_TOKEN} chars)"
 echo ""
 
+hdr_file="$(gumroad_header_file)"
+cleanup() { rm -f "$hdr_file"; }
+trap cleanup EXIT
+
 # Test 1: User/Account Info
 echo "1. Testing account access..."
 USER_RESPONSE=$(curl -s "https://api.gumroad.com/v2/user" \
-    -H "Authorization: Bearer $GUMROAD_ACCESS_TOKEN")
+    -H @"$hdr_file")
 
 if echo "$USER_RESPONSE" | jq -e '.success == true' > /dev/null 2>&1; then
     EMAIL=$(echo "$USER_RESPONSE" | jq -r '.user.email')
@@ -39,7 +45,7 @@ echo ""
 # Test 2: List Products
 echo "2. Checking products..."
 PRODUCTS_RESPONSE=$(curl -s "https://api.gumroad.com/v2/products" \
-    -H "Authorization: Bearer $GUMROAD_ACCESS_TOKEN")
+    -H @"$hdr_file")
 
 if echo "$PRODUCTS_RESPONSE" | jq -e '.success == true' > /dev/null 2>&1; then
     PRODUCT_COUNT=$(echo "$PRODUCTS_RESPONSE" | jq '.products | length')
@@ -58,7 +64,7 @@ echo ""
 echo "3. Checking recent sales..."
 AFTER_DATE=$(date -d "30 days ago" +%Y-%m-%d 2>/dev/null || date -v-30d +%Y-%m-%d)
 SALES_RESPONSE=$(curl -s "https://api.gumroad.com/v2/sales?after=$AFTER_DATE" \
-    -H "Authorization: Bearer $GUMROAD_ACCESS_TOKEN")
+    -H @"$hdr_file")
 
 if echo "$SALES_RESPONSE" | jq -e '.success == true' > /dev/null 2>&1; then
     SALES_COUNT=$(echo "$SALES_RESPONSE" | jq '.sales | length')
@@ -71,7 +77,7 @@ echo ""
 # Test 4: Check existing webhooks
 echo "4. Checking webhook subscriptions..."
 SUBS_RESPONSE=$(curl -s "https://api.gumroad.com/v2/resource_subscriptions" \
-    -H "Authorization: Bearer $GUMROAD_ACCESS_TOKEN")
+    -H @"$hdr_file")
 
 if echo "$SUBS_RESPONSE" | jq -e '.success == true' > /dev/null 2>&1; then
     SUBS_COUNT=$(echo "$SUBS_RESPONSE" | jq '.resource_subscriptions | length')

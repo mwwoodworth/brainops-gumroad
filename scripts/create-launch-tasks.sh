@@ -1,12 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Create BrainOps Command Center tasks for Gumroad launch
 # This script uses the Supabase database to track launch progress
 
-DB_HOST="aws-0-us-east-2.pooler.supabase.com"
-DB_USER="postgres.yomagoqdmxszqtdwuhab"
-DB_PASS="REDACTED_SUPABASE_DB_PASSWORD"
-DB_NAME="postgres"
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
+source "$SCRIPT_DIR/brainops-lib.sh"
+
+load_brainops_env
+require_db_env
 
 echo "🚀 Creating BrainOps Revenue Engine launch tasks..."
 echo ""
@@ -19,31 +23,38 @@ create_task() {
   local category="$4"
   local estimated_hours="$5"
 
-  PGPASSWORD=$DB_PASS psql -h $DB_HOST -U $DB_USER -d $DB_NAME -c "
-    INSERT INTO cc_tasks (
-      title,
-      description,
-      priority,
-      category,
-      status,
-      ai_priority_score,
-      estimated_hours,
-      metadata,
-      created_at,
-      updated_at
-    ) VALUES (
-      '$title',
-      '$description',
-      '$priority',
-      '$category',
-      'todo',
-      0.95,
-      $estimated_hours,
-      '{\"project\": \"brainops-revenue-engine\", \"launch_date\": \"$(date +%Y-%m-%d)\"}',
-      NOW(),
-      NOW()
-    );
-  "
+  brainops_psql -X -v ON_ERROR_STOP=1 \
+    -v title="$title" \
+    -v description="$description" \
+    -v priority="$priority" \
+    -v category="$category" \
+    -v estimated_hours="$estimated_hours" \
+    -v launch_date="$(date +%Y-%m-%d)" <<'SQL'
+\set ON_ERROR_STOP on
+INSERT INTO cc_tasks (
+  title,
+  description,
+  priority,
+  category,
+  status,
+  ai_priority_score,
+  estimated_hours,
+  metadata,
+  created_at,
+  updated_at
+) VALUES (
+  :'title',
+  :'description',
+  :'priority',
+  :'category',
+  'todo',
+  0.95,
+  :estimated_hours::numeric,
+  jsonb_build_object('project', 'brainops-revenue-engine', 'launch_date', :'launch_date'),
+  NOW(),
+  NOW()
+);
+SQL
 }
 
 # Pre-Launch Tasks

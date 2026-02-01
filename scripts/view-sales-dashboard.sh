@@ -1,9 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-DB_HOST="aws-0-us-east-2.pooler.supabase.com"
-DB_USER="postgres.yomagoqdmxszqtdwuhab"
-DB_PASS="REDACTED_SUPABASE_DB_PASSWORD"
-DB_NAME="postgres"
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
+source "$SCRIPT_DIR/brainops-lib.sh"
+
+load_brainops_env
+require_db_env
 
 echo "╔═══════════════════════════════════════════════════════════════╗"
 echo "║         BRAINOPS REVENUE ENGINE - SALES DASHBOARD             ║"
@@ -12,7 +16,7 @@ echo ""
 
 echo "📊 DAILY SUMMARY (Last 7 Days)"
 echo "═════════════════════════════════════════════════════════"
-PGPASSWORD=$DB_PASS psql -h $DB_HOST -U $DB_USER -d $DB_NAME -c "
+brainops_psql -c "
   SELECT
     date,
     total_revenue as revenue,
@@ -27,7 +31,7 @@ PGPASSWORD=$DB_PASS psql -h $DB_HOST -U $DB_USER -d $DB_NAME -c "
 echo ""
 echo "🏆 TOP PRODUCTS"
 echo "═════════════════════════════════════════════════════════"
-PGPASSWORD=$DB_PASS psql -h $DB_HOST -U $DB_USER -d $DB_NAME -c "
+brainops_psql -c "
   SELECT
     product_name,
     sales_count,
@@ -40,7 +44,7 @@ PGPASSWORD=$DB_PASS psql -h $DB_HOST -U $DB_USER -d $DB_NAME -c "
 echo ""
 echo "📍 MARKETING CHANNELS"
 echo "═════════════════════════════════════════════════════════"
-PGPASSWORD=$DB_PASS psql -h $DB_HOST -U $DB_USER -d $DB_NAME -c "
+brainops_psql -c "
   SELECT
     channel,
     sales_count,
@@ -52,7 +56,7 @@ PGPASSWORD=$DB_PASS psql -h $DB_HOST -U $DB_USER -d $DB_NAME -c "
 echo ""
 echo "💰 ALL-TIME TOTALS"
 echo "═════════════════════════════════════════════════════════"
-PGPASSWORD=$DB_PASS psql -h $DB_HOST -U $DB_USER -d $DB_NAME -c "
+brainops_psql -c "
   SELECT
     SUM(transactions) as total_sales,
     SUM(revenue) as total_revenue,
