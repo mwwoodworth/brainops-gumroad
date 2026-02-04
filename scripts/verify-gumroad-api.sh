@@ -76,18 +76,22 @@ echo ""
 
 # Test 4: Check existing webhooks
 echo "4. Checking webhook subscriptions..."
-SUBS_RESPONSE=$(curl -s "https://api.gumroad.com/v2/resource_subscriptions" \
-    -H @"$hdr_file")
-
-if echo "$SUBS_RESPONSE" | jq -e '.success == true' > /dev/null 2>&1; then
-    SUBS_COUNT=$(echo "$SUBS_RESPONSE" | jq '.resource_subscriptions | length')
-    echo "   Found $SUBS_COUNT webhook subscriptions"
-    if [ "$SUBS_COUNT" -gt 0 ]; then
-        echo "$SUBS_RESPONSE" | jq -r '.resource_subscriptions[] | "   - \(.resource_name): \(.post_url)"'
+TOTAL_SUBS=0
+for resource in sale refund cancellation; do
+    SUBS_RESPONSE=$(curl -s "https://api.gumroad.com/v2/resource_subscriptions?resource_name=$resource" \
+        -H @"$hdr_file")
+    if echo "$SUBS_RESPONSE" | jq -e '.success == true' > /dev/null 2>&1; then
+        SUBS_COUNT=$(echo "$SUBS_RESPONSE" | jq '.resource_subscriptions | length')
+        TOTAL_SUBS=$((TOTAL_SUBS + SUBS_COUNT))
+        echo "   - $resource: $SUBS_COUNT subscription(s)"
+        if [ "$SUBS_COUNT" -gt 0 ]; then
+            echo "$SUBS_RESPONSE" | jq -r '.resource_subscriptions[] | "     • \(.id): \(.post_url)"'
+        fi
+    else
+        echo "   - $resource: could not retrieve (token scope or API error)"
     fi
-else
-    echo "   Could not retrieve webhook info (may need to register)"
-fi
+done
+echo "   Total: $TOTAL_SUBS subscription(s)"
 echo ""
 
 echo "=========================================="
@@ -95,6 +99,6 @@ echo "Verification Complete!"
 echo "=========================================="
 echo ""
 echo "Next Steps:"
-echo "1. If no webhooks registered, run: python3 /home/matt-woodworth/dev/brainops-ai-agents/gumroad_revenue_agent.py register_webhook"
+echo "1. If any webhook counts are 0, run: python3 /home/matt-woodworth/dev/brainops-ai-agents/gumroad_revenue_agent.py register_webhook"
 echo "2. If no products on Gumroad, run: python3 /home/matt-woodworth/dev/brainops-ai-agents/gumroad_revenue_agent.py publish_products"
 echo "3. Deploy to Render with updated GUMROAD_ACCESS_TOKEN"
