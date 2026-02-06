@@ -28,9 +28,13 @@ function resolvePublicUrl(envNames: string[], fallback: string): string {
 }
 
 const resolveApiKey = (): string | null => {
+  // Never expose master API keys to the browser bundle.
+  if (typeof window !== 'undefined') {
+    return null;
+  }
+
   const key =
     normalize(process.env.BRAINOPS_API_KEY) ||
-    normalize(process.env.NEXT_PUBLIC_BRAINOPS_API_KEY) ||
     normalize(process.env.AI_AGENTS_TEST_KEY) ||
     normalize(process.env.AI_AGENTS_API_KEY) ||
     normalize(
