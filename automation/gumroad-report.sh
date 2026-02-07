@@ -21,6 +21,18 @@ echo "    Generated: $(date)"
 echo "========================================"
 echo ""
 
+# Test rows are useful for validating webhook wiring, but they are NOT revenue.
+echo "=== TEST SALES (EXCLUDED FROM TOTALS) ==="
+brainops_psql -t << 'EOF'
+SELECT
+  COALESCE(SUM(price), 0) as test_revenue_usd,
+  COUNT(*) as test_sales
+FROM gumroad_sales
+WHERE COALESCE(is_test, FALSE) = TRUE;
+EOF
+
+echo ""
+
 # Total Revenue
 echo "=== TOTAL REVENUE ==="
 brainops_psql -t << 'EOF'
@@ -29,7 +41,8 @@ SELECT
   COUNT(*) as total_sales,
   COUNT(DISTINCT email) as unique_customers
 FROM gumroad_sales
-WHERE lower(coalesce(metadata->>'refunded', 'false')) NOT IN ('true', '1');
+WHERE COALESCE(is_test, FALSE) = FALSE
+  AND lower(coalesce(metadata->>'refunded', 'false')) NOT IN ('true', '1');
 EOF
 
 echo ""
@@ -40,7 +53,8 @@ SELECT
   COUNT(*) as sales,
   SUM(price) as revenue_usd
 FROM gumroad_sales
-WHERE lower(coalesce(metadata->>'refunded', 'false')) NOT IN ('true', '1')
+WHERE COALESCE(is_test, FALSE) = FALSE
+  AND lower(coalesce(metadata->>'refunded', 'false')) NOT IN ('true', '1')
 GROUP BY product_name
 ORDER BY revenue_usd DESC;
 EOF
@@ -53,7 +67,8 @@ SELECT
   COUNT(*) as sales,
   SUM(price) as revenue_usd
 FROM gumroad_sales
-WHERE lower(coalesce(metadata->>'refunded', 'false')) NOT IN ('true', '1')
+WHERE COALESCE(is_test, FALSE) = FALSE
+  AND lower(coalesce(metadata->>'refunded', 'false')) NOT IN ('true', '1')
   AND sale_timestamp >= NOW() - INTERVAL '7 days'
 GROUP BY DATE(sale_timestamp)
 ORDER BY sale_date DESC;
@@ -69,7 +84,8 @@ SELECT
   email,
   price as price_usd
 FROM gumroad_sales
-WHERE lower(coalesce(metadata->>'refunded', 'false')) NOT IN ('true', '1')
+WHERE COALESCE(is_test, FALSE) = FALSE
+  AND lower(coalesce(metadata->>'refunded', 'false')) NOT IN ('true', '1')
 ORDER BY sale_timestamp DESC
 LIMIT 10;
 EOF
