@@ -167,7 +167,7 @@ case $choice in
         echo "Creating Vercel serverless function..."
         mkdir -p api
         cp scripts/gumroad-convertkit-webhook.js api/webhook.js
-        echo "Run: vercel deploy"
+        echo "Deploy with: git push origin main (Vercel auto-deploys)"
         ;;
     5)
         echo "Installing as system service..."

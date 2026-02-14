@@ -224,7 +224,7 @@ EOF
 EOF
         echo "   ✅ Created Vercel configuration"
         echo ""
-        echo "Deploy with: vercel --prod"
+        echo "Deploy with: git push origin main (Vercel auto-deploys)"
         echo "Webhook URL: https://your-app.vercel.app/api/gumroad"
         ;;
 
